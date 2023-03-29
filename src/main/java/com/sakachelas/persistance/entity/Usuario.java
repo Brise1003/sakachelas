@@ -2,6 +2,8 @@ package com.sakachelas.persistance.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -9,7 +11,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int idUsuario;
+    private Integer idUsuario;
 
     @Column(name = "nombre")
     private String nombreUsuario;
@@ -17,18 +19,21 @@ public class Usuario {
     @Column(name = "apellido")
     private String apellidoUsuario;
 
-    private int edad;
+    private Integer edad;
 
     @Column(name = "correo")
     private String correoUsuario;
 
     private String password;
 
-    public int getIdUsuario() {
+    @OneToMany(mappedBy = "usuario")
+    private List<Pedido> pedidos;
+
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -48,11 +53,11 @@ public class Usuario {
         this.apellidoUsuario = apellidoUsuario;
     }
 
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 

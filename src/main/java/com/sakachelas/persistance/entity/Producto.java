@@ -2,6 +2,8 @@ package com.sakachelas.persistance.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "productos")
 public class Producto {
@@ -23,9 +25,22 @@ public class Producto {
 
     private String estilo;
 
-    private double precio;
+    private BigDecimal precio;
 
-    private Integer cerveceros_id;
+    @Column(name = "cerveceros_id")
+    private Integer cerveceroId;
+
+    @ManyToOne
+    @JoinColumn(name = "cervecero_id", insertable = false, updatable = false)
+    private Cervecero cervecero;
+
+    public Cervecero getCervecero() {
+        return cervecero;
+    }
+
+    public void setCervecero(Cervecero cervecero) {
+        this.cervecero = cervecero;
+    }
 
     public Integer getIdProducto() {
         return idProducto;
@@ -75,19 +90,19 @@ public class Producto {
         this.estilo = estilo;
     }
 
-    public double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
 
-    public Integer getCerveceros_id() {
-        return cerveceros_id;
+    public Integer getCerveceroId() {
+        return cerveceroId;
     }
 
-    public void setCerveceros_id(Integer cerveceros_id) {
-        this.cerveceros_id = cerveceros_id;
+    public void setCerveceroId(Integer cerveceroId) {
+        this.cerveceroId = cerveceroId;
     }
 }

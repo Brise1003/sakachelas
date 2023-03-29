@@ -2,14 +2,16 @@ package com.sakachelas.persistance.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "cerveceros")
-public class Cerveceros {
+public class Cervecero {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int idCervecero;
+    private Integer idCervecero;
 
     @Column(name = "correo")
     private String correoCervecero;
@@ -26,11 +28,14 @@ public class Cerveceros {
     @Column(name = "apellido_cervecero")
     private String apellidoCervecero;
 
-    public int getIdCervecero() {
+    @OneToMany(mappedBy = "cervecero")
+    private List<Producto> producto;
+
+    public Integer getIdCervecero() {
         return idCervecero;
     }
 
-    public void setIdCervecero(int idCervecero) {
+    public void setIdCervecero(Integer idCervecero) {
         this.idCervecero = idCervecero;
     }
 
