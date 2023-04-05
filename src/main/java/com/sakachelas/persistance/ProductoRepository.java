@@ -5,13 +5,17 @@ import com.sakachelas.domain.repository.ProductRepository;
 import com.sakachelas.persistance.crud.ProductoCrudRepository;
 import com.sakachelas.persistance.entity.Producto;
 import com.sakachelas.persistance.mapper.ProductMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 public class ProductoRepository implements ProductRepository {
+    @Autowired
     private ProductoCrudRepository productoCrudRepository;
+
+    @Autowired
     private ProductMapper mapper;
 
     @Override
@@ -28,7 +32,7 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public Optional<List<Product>> getByStyle(String style) {
-        List<Producto> productos = productoCrudRepository.findByEstiloOrderByNombre(style);
+        List<Producto> productos = productoCrudRepository.findByEstiloOrderByNombreProducto(style);
         return Optional.of(mapper.toProducts(productos));
     }
 
@@ -42,7 +46,7 @@ public class ProductoRepository implements ProductRepository {
         Producto producto = mapper.toProducto(product);
         return mapper.toProduct(productoCrudRepository.save(producto));
     }
-    
+
     @Override
     public void delete(int productId){
         productoCrudRepository.deleteById(productId);

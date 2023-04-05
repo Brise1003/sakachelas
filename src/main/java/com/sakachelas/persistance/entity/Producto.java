@@ -10,11 +10,11 @@ public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_producto")
     private Integer idProducto;
 
     @Column(name = "nombre")
-    private String nompreProducto;
+    private String nombreProducto;
 
     @Column(name = "cantidad_stock")
     private Integer cantidadStock;
@@ -27,20 +27,12 @@ public class Producto {
 
     private BigDecimal precio;
 
-    @Column(name = "cerveceros_id")
+    @Column(name = "cervecero_id")
     private Integer cerveceroId;
 
     @ManyToOne
-    @JoinColumn(name = "cervecero_id", insertable = false, updatable = false)
+    @JoinColumn(name = "id_cervecero", insertable = false, updatable = false)
     private Cervecero cervecero;
-
-    public Cervecero getCervecero() {
-        return cervecero;
-    }
-
-    public void setCervecero(Cervecero cervecero) {
-        this.cervecero = cervecero;
-    }
 
     public Integer getIdProducto() {
         return idProducto;
@@ -50,12 +42,12 @@ public class Producto {
         this.idProducto = idProducto;
     }
 
-    public String getNompreProducto() {
-        return nompreProducto;
+    public String getNombreProducto() {
+        return nombreProducto;
     }
 
-    public void setNompreProducto(String nompreProducto) {
-        this.nompreProducto = nompreProducto;
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
     }
 
     public Integer getCantidadStock() {
@@ -104,5 +96,13 @@ public class Producto {
 
     public void setCerveceroId(Integer cerveceroId) {
         this.cerveceroId = cerveceroId;
+    }
+
+    public Cervecero getCervecero() {
+        return cervecero;
+    }
+
+    public void setCervecero(Cervecero cervecero) {
+        this.cervecero = cervecero;
     }
 }

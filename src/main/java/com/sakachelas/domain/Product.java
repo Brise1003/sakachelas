@@ -1,5 +1,7 @@
 package com.sakachelas.domain;
 
+import java.math.BigDecimal;
+
 public class Product {
     private int productId;
     private String name;
@@ -7,7 +9,7 @@ public class Product {
     private String description;
     private String brand;
     private String style;
-    private String price;
+    private BigDecimal price;
 
     public int getProductId() {
         return productId;
@@ -57,11 +59,11 @@ public class Product {
         this.style = style;
     }
 
-    public String getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

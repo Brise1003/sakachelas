@@ -2,6 +2,8 @@ package com.sakachelas.persistance.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_pedido")
     private Integer idPedido;
 
     @Column(name = "num_guia")
@@ -20,7 +22,7 @@ public class Pedido {
     @Column(name = "estatus")
     private String status;
 
-    private LocalDate fecha;
+    private Timestamp fecha;
 
     @Column(name = "usuarios_id")
     private Integer idUsuario;
@@ -28,20 +30,14 @@ public class Pedido {
     @Column(name = "medio_pago")
     private String medioPago;
 
+    private BigDecimal total;
+
     @ManyToOne
-    @JoinColumn(name = "usuario_id", insertable = false, updatable = false)
+    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
     private Usuario usuario;
 
     @OneToMany(mappedBy = "pedido", cascade = {CascadeType.ALL})
     private List<PedidoProducto> productos;
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 
     public Integer getIdPedido() {
         return idPedido;
@@ -67,11 +63,11 @@ public class Pedido {
         this.status = status;
     }
 
-    public LocalDate getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 
@@ -89,5 +85,29 @@ public class Pedido {
 
     public void setMedioPago(String medioPago) {
         this.medioPago = medioPago;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<PedidoProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<PedidoProducto> productos) {
+        this.productos = productos;
     }
 }

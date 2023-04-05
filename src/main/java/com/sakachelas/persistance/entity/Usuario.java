@@ -10,7 +10,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_usuario")
     private Integer idUsuario;
 
     @Column(name = "nombre")
@@ -25,6 +25,8 @@ public class Usuario {
     private String correoUsuario;
 
     private String password;
+
+    private Integer pedido;
 
     @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
@@ -75,5 +77,21 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Integer pedido) {
+        this.pedido = pedido;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }

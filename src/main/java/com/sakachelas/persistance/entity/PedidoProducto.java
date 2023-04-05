@@ -10,41 +10,26 @@ public class PedidoProducto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pedidos_productos")
     private Integer id;
 
-    @Column(name = "pedidos")
+    @Column(name = "pedido")
     private Integer idPedido;
 
-    @Column(name = "productos")
+    @Column(name = "producto")
     private Integer idproducto;
 
     private Integer cantidad;
 
-    private BigDecimal total;
+    private BigDecimal totalcerveza;
 
     @ManyToOne
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name = "id_pedido")
     private Pedido pedido;
 
     @ManyToOne
-    @JoinColumn(name = "producto_id")
+    @JoinColumn(name = "id_producto")
     private Producto producto;
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
 
     public Integer getId() {
         return id;
@@ -78,11 +63,27 @@ public class PedidoProducto {
         this.cantidad = cantidad;
     }
 
-    public BigDecimal getTotal() {
-        return total;
+    public BigDecimal getTotalcerveza() {
+        return totalcerveza;
     }
 
-    public void setTotal(BigDecimal total) {
-        this.total = total;
+    public void setTotalcerveza(BigDecimal totalcerveza) {
+        this.totalcerveza = totalcerveza;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }

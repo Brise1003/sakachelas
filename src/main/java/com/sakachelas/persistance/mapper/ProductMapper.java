@@ -25,5 +25,6 @@ public interface ProductMapper {
 
     @InheritInverseConfiguration
     @Mapping(target = "cerveceroId", ignore = true)
+    @Mapping(target = "cervecero", ignore = true)
     Producto toProducto(Product product);
 }
