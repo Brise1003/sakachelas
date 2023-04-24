@@ -19,12 +19,12 @@ public interface ProductMapper {
             @Mapping(source = "marca", target = "brand"),
             @Mapping(source = "estilo", target = "style"),
             @Mapping(source = "precio", target = "price"),
+            @Mapping(source = "idCervecero", target = "brewerId"),
+            @Mapping(source = "cervecero", target = "brewer")
     })
     Product toProduct(Producto producto);
     List<Product> toProducts(List<Producto> productos);
 
     @InheritInverseConfiguration
-    @Mapping(target = "cerveceroId", ignore = true)
-    @Mapping(target = "cervecero", ignore = true)
     Producto toProducto(Product product);
 }

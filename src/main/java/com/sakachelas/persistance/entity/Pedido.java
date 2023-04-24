@@ -24,7 +24,7 @@ public class Pedido {
 
     private Timestamp fecha;
 
-    @Column(name = "usuarios_id")
+    @Column(name = "id_usuario")
     private Integer idUsuario;
 
     @Column(name = "medio_pago")

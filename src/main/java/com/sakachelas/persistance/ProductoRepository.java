@@ -20,7 +20,7 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public List<Product> getAll(){
-        List<Producto> productos= (List<Producto>) productoCrudRepository.findAll();
+        List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
         return mapper.toProducts(productos);
     }
 
@@ -32,7 +32,7 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public Optional<List<Product>> getByStyle(String style) {
-        List<Producto> productos = productoCrudRepository.findByEstiloOrderByNombreProducto(style);
+        List<Producto> productos = productoCrudRepository.getByEstilo(style);
         return Optional.of(mapper.toProducts(productos));
     }
 

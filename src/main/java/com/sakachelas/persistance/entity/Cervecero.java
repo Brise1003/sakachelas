@@ -10,8 +10,8 @@ public class Cervecero {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cervecero")
-    private Integer idCervecero;
+    @Column(name = "id_cervecero", nullable = false, unique = true)
+    private Integer cerveceroId;
 
     @Column(name = "correo")
     private String correoCervecero;
@@ -31,12 +31,12 @@ public class Cervecero {
     @OneToMany(mappedBy = "cervecero")
     private List<Producto> productos;
 
-    public Integer getIdCervecero() {
-        return idCervecero;
+    public Integer getCerveceroId() {
+        return cerveceroId;
     }
 
-    public void setIdCervecero(Integer idCervecero) {
-        this.idCervecero = idCervecero;
+    public void setCerveceroId(Integer cerveceroId) {
+        this.cerveceroId = cerveceroId;
     }
 
     public String getCorreoCervecero() {

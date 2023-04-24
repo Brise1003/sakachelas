@@ -11,7 +11,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
-    private Integer idUsuario;
+    private Integer usuarioId;
 
     @Column(name = "nombre")
     private String nombreUsuario;
@@ -31,12 +31,12 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
 
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Integer getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuarioId(Integer usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
     public String getNombreUsuario() {

@@ -10,7 +10,7 @@ public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_producto")
+    @Column(name = "id_producto", nullable = false, unique = true)
     private Integer idProducto;
 
     @Column(name = "nombre")
@@ -27,8 +27,8 @@ public class Producto {
 
     private BigDecimal precio;
 
-    @Column(name = "cervecero_id")
-    private Integer cerveceroId;
+    @Column(name = "id_cervecero")
+    private Integer idCervecero;
 
     @ManyToOne
     @JoinColumn(name = "id_cervecero", insertable = false, updatable = false)
@@ -90,12 +90,12 @@ public class Producto {
         this.precio = precio;
     }
 
-    public Integer getCerveceroId() {
-        return cerveceroId;
+    public Integer getIdCervecero() {
+        return idCervecero;
     }
 
-    public void setCerveceroId(Integer cerveceroId) {
-        this.cerveceroId = cerveceroId;
+    public void setIdCervecero(Integer idCervecero) {
+        this.idCervecero = idCervecero;
     }
 
     public Cervecero getCervecero() {

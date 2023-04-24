@@ -10,7 +10,7 @@ public interface ProductoCrudRepository extends CrudRepository<Producto, Integer
     @Query(value = "SELECT * FROM productos WHERE marca = ? ORDER BY nombreProducto", nativeQuery = true)
     List<Producto> getByMarca(String marca);
 
-    List<Producto> findByEstiloOrderByNombreProducto(String estilo);
-
+    @Query(value = "SELECT * FROM productos WHERE estilo = ? ORDER BY nombreProducto", nativeQuery = true)
+    List<Producto> getByEstilo(String estilo);
 
 }

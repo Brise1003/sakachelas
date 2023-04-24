@@ -10,6 +10,9 @@ public class Product {
     private String brand;
     private String style;
     private BigDecimal price;
+    private int brewerId;
+    private Brewer brewer;
+
 
     public int getProductId() {
         return productId;
@@ -67,4 +70,19 @@ public class Product {
         this.price = price;
     }
 
+    public int getBrewerId() {
+        return brewerId;
+    }
+
+    public void setBrewerId(int brewerId) {
+        this.brewerId = brewerId;
+    }
+
+    public Brewer getBrewer() {
+        return brewer;
+    }
+
+    public void setBrewer(Brewer brewer) {
+        this.brewer = brewer;
+    }
 }
