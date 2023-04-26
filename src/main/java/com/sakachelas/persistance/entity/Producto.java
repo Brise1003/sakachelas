@@ -25,6 +25,8 @@ public class Producto {
 
     private String estilo;
 
+    private String imagen;
+
     private BigDecimal precio;
 
     @Column(name = "id_cervecero")
@@ -80,6 +82,14 @@ public class Producto {
 
     public void setEstilo(String estilo) {
         this.estilo = estilo;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public BigDecimal getPrecio() {

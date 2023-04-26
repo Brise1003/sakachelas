@@ -48,7 +48,7 @@ public class ProductoRepository implements ProductRepository {
     }
 
     @Override
-    public void delete(int productId){
+    public void delete(int productId) {
         productoCrudRepository.deleteById(productId);
     }
 }

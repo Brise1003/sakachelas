@@ -9,10 +9,9 @@ public class Product {
     private String description;
     private String brand;
     private String style;
+    private String image;
     private BigDecimal price;
     private int brewerId;
-    private Brewer brewer;
-
 
     public int getProductId() {
         return productId;
@@ -62,6 +61,14 @@ public class Product {
         this.style = style;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public BigDecimal getPrice() {
         return price;
     }
@@ -78,11 +85,4 @@ public class Product {
         this.brewerId = brewerId;
     }
 
-    public Brewer getBrewer() {
-        return brewer;
-    }
-
-    public void setBrewer(Brewer brewer) {
-        this.brewer = brewer;
-    }
 }

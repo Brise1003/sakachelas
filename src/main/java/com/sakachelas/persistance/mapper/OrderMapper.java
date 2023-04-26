@@ -2,6 +2,7 @@ package com.sakachelas.persistance.mapper;
 
 import com.sakachelas.domain.Order;
 import com.sakachelas.persistance.entity.Pedido;
+import com.sakachelas.persistance.entity.Producto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -20,11 +21,14 @@ public interface OrderMapper {
             @Mapping(source = "idUsuario", target = "userId"),
             @Mapping(source = "medioPago", target = "payment"),
             @Mapping(source = "total", target = "total"),
-            @Mapping(source = "usuario", target = "user")
     })
     Order toOrder(Pedido pedido);
     List<Order> toOrders(List<Pedido> pedidos);
 
     @InheritInverseConfiguration
+    @Mappings({
+            @Mapping(target = "usuario", ignore = true),
+            @Mapping(target = "productos", ignore = true),
+    })
     Pedido toPedido(Order order);
 }

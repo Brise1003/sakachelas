@@ -3,6 +3,7 @@ package com.sakachelas.domain;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+
 public class Order {
     private int orderId;
     private String trackingGuide;
@@ -11,7 +12,6 @@ public class Order {
     private int userId;
     private String payment;
     private BigDecimal total;
-    private User user;
 
     public int getOrderId() {
         return orderId;
@@ -49,7 +49,7 @@ public class Order {
         return userId;
     }
 
-    public void setUser(int userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -69,11 +69,4 @@ public class Order {
         this.total = total;
     }
 
-    public User getUser(){
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
