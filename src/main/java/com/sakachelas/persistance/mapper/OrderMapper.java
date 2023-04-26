@@ -21,6 +21,7 @@ public interface OrderMapper {
             @Mapping(source = "idUsuario", target = "userId"),
             @Mapping(source = "medioPago", target = "payment"),
             @Mapping(source = "total", target = "total"),
+            @Mapping(source = "productos", target = "items"),
     })
     Order toOrder(Pedido pedido);
     List<Order> toOrders(List<Pedido> pedidos);
@@ -28,7 +29,6 @@ public interface OrderMapper {
     @InheritInverseConfiguration
     @Mappings({
             @Mapping(target = "usuario", ignore = true),
-            @Mapping(target = "productos", ignore = true),
     })
     Pedido toPedido(Order order);
 }

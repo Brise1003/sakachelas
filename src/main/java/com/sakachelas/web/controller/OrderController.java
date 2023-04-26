@@ -2,7 +2,10 @@ package com.sakachelas.web.controller;
 
 import com.sakachelas.domain.Order;
 import com.sakachelas.domain.service.OrderService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,17 +19,19 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping("/all")
-    public List<Order> getAll(){
-        return orderService.getAll();
+    public ResponseEntity<List<Order>> getAll(){
+        return new ResponseEntity<>(orderService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Optional<List<Order>> getByClient(@PathVariable("id") int userId){
-        return orderService.getByClient(userId);
+    public ResponseEntity<List<Order>> getByClient(@PathVariable("id") int userId){
+        return orderService.getByClient(userId)
+                .map(orders -> new ResponseEntity<>(orders ,HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/save")
-    public Order save(Order order){
-        return orderService.save(order);
+    public ResponseEntity<Order> save(@RequestBody Order order){
+        return new ResponseEntity<>(orderService.save(order), HttpStatus.OK);
     }
 }

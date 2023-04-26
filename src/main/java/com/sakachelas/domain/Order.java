@@ -2,6 +2,7 @@ package com.sakachelas.domain;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 
 
 public class Order {
@@ -12,6 +13,7 @@ public class Order {
     private int userId;
     private String payment;
     private BigDecimal total;
+    private List<ProductOrder> items;
 
     public int getOrderId() {
         return orderId;
@@ -69,4 +71,11 @@ public class Order {
         this.total = total;
     }
 
+    public List<ProductOrder> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ProductOrder> items) {
+        this.items = items;
+    }
 }
