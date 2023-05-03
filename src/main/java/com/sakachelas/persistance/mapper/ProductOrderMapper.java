@@ -7,18 +7,22 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-@Mapper(componentModel = "spring", uses = {OrderMapper.class})
+@Mapper(componentModel = "spring", uses = {ProductMapper.class})
 public interface ProductOrderMapper {
     @Mappings({
             @Mapping(source = "idPedido", target = "orderId"),
             @Mapping(source = "idProducto", target = "productId"),
             @Mapping(source = "cantidad", target = "quantity"),
             @Mapping(source = "totalcerveza", target = "beertotal"),
-            @Mapping(source = "pedido",target = "order"),
-            @Mapping(source = "producto", target = "product"),
+            @Mapping(target = "order", ignore = true),
+            @Mapping(target = "product", ignore = true)
     })
     ProductOrder toProductOrder(PedidoProducto pedidoProducto);
 
     @InheritInverseConfiguration
-    PedidoProducto toPedidoProducto(ProductOrder productOrder);
+    @Mappings({
+            @Mapping(target = "pedido", ignore = true),
+            @Mapping(target = "producto", ignore = true),
+    })
+    PedidoProducto toPedidoProducto(ProductOrder item);
 }

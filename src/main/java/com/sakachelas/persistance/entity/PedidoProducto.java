@@ -10,13 +10,13 @@ public class PedidoProducto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_pedidos_productos")
+    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "pedido")
+    @Column(name = "id_pedido")
     private Integer idPedido;
 
-    @Column(name = "producto")
+    @Column(name = "id_producto")
     private Integer idProducto;
 
     private Integer cantidad;
@@ -24,11 +24,11 @@ public class PedidoProducto {
     private BigDecimal totalcerveza;
 
     @ManyToOne
-    @JoinColumn(name = "id_pedido")
+    @JoinColumn(name = "id_pedido", insertable = false, updatable = false)
     private Pedido pedido;
 
     @ManyToOne
-    @JoinColumn(name = "id_producto")
+    @JoinColumn(name = "id_producto", insertable = false, updatable = false)
     private Producto producto;
 
     public Integer getId() {

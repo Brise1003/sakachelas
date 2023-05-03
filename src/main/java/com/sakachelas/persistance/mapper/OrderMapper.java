@@ -2,7 +2,6 @@ package com.sakachelas.persistance.mapper;
 
 import com.sakachelas.domain.Order;
 import com.sakachelas.persistance.entity.Pedido;
-import com.sakachelas.persistance.entity.Producto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -10,7 +9,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {ProductOrderMapper.class})
 public interface OrderMapper {
 
     @Mappings({
