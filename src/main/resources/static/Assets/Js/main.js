@@ -25,7 +25,7 @@ function obtener_localstorage() {
         ', nuestro' + '<a onclick="aviso();" target="_blank"> <u>Aviso de Privacidad</u></a>' + ', y uso de cookies.',
       backdrop: `
     rgba(255,169,49,0.8)
-    url("/Assets/Img/nyan-cat.gif")
+    url("../Img/nyan-cat.gif")
     left top
     no-repeat
     `,
@@ -77,7 +77,7 @@ function aviso() {
     icon: "info",
     width: `85%`,
     footer: `<span class="rojo">Esta información es importante</span>`,
-    imageUrl: "/Assets/Img/logo.png",
+    imageUrl: "./Assets/Img/logo.png",
     imageWidth: "200px",
 
   })

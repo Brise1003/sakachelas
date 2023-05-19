@@ -28,7 +28,7 @@
 
 body{
     font-family: 'Roboto Flex';
-    background: url(/assets/img/fondoProyecto.jpg);
+    background: url(../Img/fondoProyecto.jpg);
 }
 
 
@@ -110,7 +110,7 @@ footer{
 .container .contactInfo .box .icon{
     min-height: 60px;
     height: 60px;
-    background: url(/assets/img/fondoProyecto.jpg);
+    /*background: url(../Img/fondoProyecto.jpg);*/
     display: flex;
     justify-content: center;
     align-items: center;

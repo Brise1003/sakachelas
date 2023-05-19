@@ -52,4 +52,5 @@ public class UserController {
                 new ResponseEntity<>(HttpStatus.OK):
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+    
 }
