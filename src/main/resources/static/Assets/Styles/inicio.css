@@ -21,7 +21,7 @@
 
 
 body{
-    background-image: url(/Assets/Img/fondo.jpeg);
+    background-image: url(/static/Assets/Img/fondo.jpeg);
     font-family: 'Roboto Flex';
 }
 

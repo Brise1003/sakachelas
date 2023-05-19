@@ -2,6 +2,7 @@ package com.sakachelas.domain.service;
 
 import com.sakachelas.domain.Product;
 import com.sakachelas.domain.repository.ProductRepository;
+import com.sakachelas.persistance.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ import java.util.Optional;
 public class ProductService {
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ProductMapper productMapper;
 
     public List<Product> getAll(){
         return productRepository.getAll();
