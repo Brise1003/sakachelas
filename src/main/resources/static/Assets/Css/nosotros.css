@@ -73,7 +73,7 @@
 }
 
 body{
-    background-image: url(/Assets/Img/fondo.jpg); 
+    background-image: url(../Img/fondo.jpg);
     padding: 0;
     font-family: 'Roboto Flex';
 }
