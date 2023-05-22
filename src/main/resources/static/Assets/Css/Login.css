@@ -6,7 +6,7 @@ body{
 }
 
 .bg{
-  background-image: url(/Assets/Img/colCerveza.png);
+  background-image: url(../Img/colCerveza.png);
 }
 #colo {
     background: #FDF6DB;

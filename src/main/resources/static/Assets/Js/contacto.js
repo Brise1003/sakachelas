@@ -51,4 +51,13 @@ inputs.forEach((input) => {
 	input.addEventListener('blur', validarFormulario);
 });
 
-formulario.addEventListener('submit');
+formulario.addEventListener('submit', (e) => {
+	e.preventDefault();
+});
+
+function sendEmail(){
+	let body = document.getElementById("body").value;
+	let subjectLine = "Comentario: "+document.getElementsByName("nombre").value;
+
+	window.location.href = "mailto: example@mail.com?subject=" + subjectLine + "&body=" + body + subjectLine + document.getElementsByName("telefono").value; 
+}

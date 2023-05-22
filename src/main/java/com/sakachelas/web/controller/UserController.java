@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/{id}")
+    @GetMapping(value = "/{id}")
     @Operation(description = "Get account")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Ok"),
@@ -34,7 +34,7 @@ public class UserController {
 //
 //    }
 
-    @RequestMapping(value = "/save")
+    @PostMapping(value = "/save")
     @Operation(description = "Save a user with whole object.")
     @ApiResponse(responseCode = "200", description = "Ok")
     public ResponseEntity<User> saveUser(@RequestBody User user){

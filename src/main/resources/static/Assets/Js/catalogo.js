@@ -2,11 +2,8 @@
 
 let productos;
 // Aquí se debe cambiar el URL del servicio en el BackEnd
-const URL_MAIN ='http://localhost:8090/sakachelas/api/catalogo'; //URL a donde se hace la petición
+const URL_MAIN ='http://localhost:8090/sakachelas/api/products/all'; //URL a donde se hace la petición
 function addItems(div_Productos) { //div_Productos es el div donde se va a agregar los productos
-    
-    
-    
     fetch(URL_MAIN, {
         method: 'get' //tipo de método
     }).then(function(response) {//response es la respuesta del servidor
@@ -21,7 +18,7 @@ function addItems(div_Productos) { //div_Productos es el div donde se va a agreg
                         <img class="bd-placeholder-img card-img-top" role="img" src="Assets/img/${p.image}" />
                         <div class="card-body">
                         <p class="card-text"><strong>${p.name}</strong></p>
-                        <p class="card-text">${p.descrition}</p>
+                        <p class="card-text">${p.description}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                             
