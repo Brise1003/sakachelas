@@ -21,7 +21,8 @@ function addItems(div_Productos) { //div_Productos es el div donde se va a agreg
                         <p class="card-text">${p.description}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                            
+                            <a class="add-cart cart2" href="#"><i class="produto__icon fas fa-cart-plus"><img src="./Assets/Img/carrito.jpeg" alt=""
+                            class="img_carrito"></i></a>
                             </div>
                             <small class="text-muted">$ ${p.price} MXN</small>
                         </div>

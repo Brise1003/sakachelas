@@ -57,7 +57,7 @@ formulario.addEventListener('submit', (e) => {
 
 function sendEmail(){
 	let body = document.getElementById("body").value;
-	let subjectLine = "Comentario: "+document.getElementsByName("nombre").value;
+	let subjectLine = "Comentario: " + document.getElementById("nombre").value + " - " + document.getElementById("telefono").value;
 
-	window.location.href = "mailto: example@mail.com?subject=" + subjectLine + "&body=" + body + subjectLine + document.getElementsByName("telefono").value; 
+	window.location.href = "mailto: example@mail.com?subject=" + subjectLine + "&body=" + body; 
 }
