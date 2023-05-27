@@ -19,6 +19,8 @@ public class PedidoProducto {
     @Column(name = "id_producto")
     private Integer idProducto;
 
+    private String nombre;
+
     private Integer cantidad;
 
     private BigDecimal totalcerveza;
@@ -49,6 +51,14 @@ public class PedidoProducto {
 
     public Integer getIdProducto() {
         return idProducto;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public void setIdProducto(Integer idProducto) {

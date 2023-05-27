@@ -41,7 +41,7 @@ async function loadOrders(){
         for(let item of order.items){
             
             console.log(item.productId);
-            item = '<p>'+item.quantity+ 'pz.  '+ item.productId+'</p>';
+            item = '<p>'+item.quantity+ 'pz.  '+ item.name+'</p>';
             itemsList+= item;
         }
         let orderHtml = '<tr><th scope="row">'+order.orderId+'</th><td>'+order.trackingGuide+'</td><td>'+order.status+'</td><td>'+order.date+'</td><td>'+order.payment+'</td><td>'+
