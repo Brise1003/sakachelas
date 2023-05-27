@@ -36,7 +36,18 @@ async function loadOrders(){
 
     listadoHTML = '';
     for(let order of orders){
-        let orderHtml = '<tr><th scope="row">'+order.orderId+'</th><td>'+order.trackingGuide+'</td><td>'+order.status+'</td><td>'+order.date+'</td><td>'+order.payment+'</td><td>'+order.items+'</td><td>'+order.total+'</td></tr>';
+        console.log(order.items);
+        let itemsList = '';
+        for(let item of order.items){
+            
+            console.log(item.productId);
+            item = '<p>'+item.quantity+ 'pz.  '+ item.productId+'</p>';
+            itemsList+= item;
+        }
+        let orderHtml = '<tr><th scope="row">'+order.orderId+'</th><td>'+order.trackingGuide+'</td><td>'+order.status+'</td><td>'+order.date+'</td><td>'+order.payment+'</td><td>'+
+        itemsList
+        
+        +'</td><td>'+order.total+'</td></tr>';
         listadoHTML += orderHtml;
     }
 
