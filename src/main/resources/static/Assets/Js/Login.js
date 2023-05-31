@@ -1,5 +1,5 @@
 function mostrarPassword(){
-	var cambio = document.getElementById("txtPassword");
+	var cambio = document.getElementById("password");
 	if(cambio.type == "password"){
 		cambio.type = "text";
 		$('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
@@ -69,4 +69,30 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
+
+	if (campos.correo && campos.password) {
+		registerUser();
+		alert("Haz iniciado sesión.");
+		window.location.href = "./Session.html"
+	  }
 });
+
+async function registerUser() {
+
+	let datos = {};
+	  datos.email = document.getElementById("correo").value;
+	  datos.password = document.getElementById("password").value;
+	
+  
+	const request = await fetch('http://localhost:8090/sakachelas/api/users/login', {
+	  method: 'POST',
+	  headers: {
+		'Accept': 'application/json',
+		'Content-Type': 'application/json'
+	  },
+	  body: JSON.stringify(datos)
+	});
+	const usuarios = await request.json();
+  
+  }
+

@@ -35,10 +35,11 @@ public class UserController {
 //    }
 
     @PostMapping(value = "/save")
-    @Operation(description = "Save a user with whole object.")
+    @Operation(description = "Save a user as whole object.")
     @ApiResponse(responseCode = "200", description = "Ok")
     public ResponseEntity<User> saveUser(@RequestBody User user){
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
+
     }
 
     @DeleteMapping("/delete/{id}")

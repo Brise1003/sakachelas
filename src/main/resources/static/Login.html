@@ -40,11 +40,12 @@
         </a>
       </div>
       <div class="ms-auto">
-         <a class="navbar-item m-1" href="./Login.html">
-          <img src="./Assets/Img/iconUser.png"  width="30px" height="30px">
-        </a> 
+        <a class="navbar-item m-1" href="./Login.html">
+          <img src="./Assets/Img/iconUser.png" width="30px" height="30px">
+        </a>
         <a class="cart" href="./Cart.html">
-          <img src="./Assets/Img/cart.png"  width="30px" height="30px"><span  class="position-absolute top-25 end-175 translate-middle" id="contador">0</span>
+          <img src="./Assets/Img/cart.png" width="30px" height="30px"><span
+            class="position-absolute top-25 end-175 translate-middle" id="contador">0</span>
         </a>
       </div>
     </div>
@@ -110,14 +111,14 @@
               <label for="input-group" class="form-label">Password</label>
               <i class="formulario__validacion-estado fas fa-times-circle"></i>
               <div class="input-group">
-                <input ID="txtPassword" type="Password" Class="form-control" name="password">
+                <input id="password" type="Password" Class="form-control" name="password">
                 <div class="input-group-append">
                   <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()">
                     <span class="fa fa-eye-slash icon"></span> </button>
                 </div>
 
               </div>
-              <p class="formulario__input-error">La contraseña es incorr5ecta.</p>
+              <p class="formulario__input-error">La contraseña es incorrecta.</p>
             </div>
           </div>
 
@@ -128,7 +129,7 @@
 
           <center>
             <div class="my-2 p-1">
-              <button type="submit" class="btn btn-outline-dark"><a href="./Session.html">Iniciar sesión</button>
+              <button type="submit" class="btn btn-outline-dark" onclick="addEventListener">Iniciar sesión</button>
             </div>
           </center>
 
@@ -169,8 +170,10 @@
           </div>
         </div>
         <div class="my-3 text-center">
-          <span>¿No tienes cuenta? <a href="./Formulario.html"><h3>Registrate</h3></a></span> <br>
-          <span><a href="#">Recuperar Password</a></span>
+          <span>¿No tienes cuenta? <a href="./Formulario.html">
+              <h3>Registrate</h3>
+            </a></span> <br>
+          <!--<span><a href="#">Recuperar Password</a></span>-->
         </div>
 
       </div>
@@ -189,21 +192,24 @@
         <!-- Redes sociales -->
         <div class="col-md-2">
           <div class="footerRedesSociales">
-              <h6> Tel: +52 55 55 55 55 </h6>
-              <h6> Correo: correo@outlook.com </h6>
-              <h6> Redes sociales </h6>
-              <a href="https://www.facebook.com/" target="_blank"><img src="./Assets/Img/icono-fc.png" alt="logotipo de Facebook" height="30px"></a>
-              <a href="https://www.instagram.com/" target="_blank"><img src="./Assets/Img/icono-ig.webp" alt="logotipo de Instagram" height="30px"></a>
-              <a href="https://twitter.com/?lang=es" target="_blank"><img src="./Assets/Img/icono-tw.png" alt="logotipo de twitter" height="30px"></a>
+            <h6> Tel: +52 55 55 55 55 </h6>
+            <h6> Correo: correo@outlook.com </h6>
+            <h6> Redes sociales </h6>
+            <a href="https://www.facebook.com/" target="_blank"><img src="./Assets/Img/icono-fc.png"
+                alt="logotipo de Facebook" height="30px"></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="./Assets/Img/icono-ig.webp"
+                alt="logotipo de Instagram" height="30px"></a>
+            <a href="https://twitter.com/?lang=es" target="_blank"><img src="./Assets/Img/icono-tw.png"
+                alt="logotipo de twitter" height="30px"></a>
           </div>
         </div>
 
         <!-- Aviso de privacidad -->
-      <div class="col-md-3">
-        <h6>
-          <a onclick="aviso()" class="linkFooter">Aviso de privacidad</a>
-        </h6>
-      </div>
+        <div class="col-md-3">
+          <h6>
+            <a onclick="aviso()" class="linkFooter">Aviso de privacidad</a>
+          </h6>
+        </div>
 
         <!-- Terminos y condiciones -->
         <div class="col-md-3">
@@ -212,19 +218,19 @@
           </h6>
         </div>
 
-      <!-- Contacto -->
-      <div class="col-md-2">
-        <h6>
-          <a href="./Contacto.html" class="linkFooter">Contacto</a>
-        </h6>
-      </div>
+        <!-- Contacto -->
+        <div class="col-md-2">
+          <h6>
+            <a href="./Contacto.html" class="linkFooter">Contacto</a>
+          </h6>
+        </div>
 
-      <!-- Nosotros -->
-      <div class="col-md-2">
-        <h6>
-          <a href="./Nosotros.html" class="linkFooter">Nosotros</a>
-        </h6>
-      </div>
+        <!-- Nosotros -->
+        <div class="col-md-2">
+          <h6>
+            <a href="./Nosotros.html" class="linkFooter">Nosotros</a>
+          </h6>
+        </div>
 
 
       </div>
@@ -243,9 +249,9 @@
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
   <!--jquery-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <!--conexion js-->
-   <script src="./Assets/Js/Cart.js"> </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <!--conexion js-->
+  <script src="./Assets/Js/Cart.js"> </script>
   <!--Login.js-->
   <script src="./Assets/Js/Login.js"></script>
   <!--validation-->
@@ -253,7 +259,7 @@
   <!--swal-->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./Assets/Js/Main.js"></script>
- 
+
 
 </body>
 
