@@ -30,6 +30,9 @@ body{
 	color: #640002;
 }
 
+#eraseAccountButton{
+    float: right;
+}
 /* FOOTER */
 
 .footerRedesSociales{
@@ -55,3 +58,4 @@ footer{
 #contador{
     color: #000;
 }
+

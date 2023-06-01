@@ -16,7 +16,9 @@ async function loadUser(){
     
     const usuario = await request.json();
 
-    let usuarioHtml = '<h3><strong>'+usuario.username+' '+usuario.userLastname+', '+usuario.age+' años</strong></h3><p>'+usuario.email+'</p>';
+    let botonEliminar = '<button onclick="eliminarUsuario('+usuario.userId+')" type="button" class="btn btn-outline-dark" id="eraseAccountButton">Eliminar cuenta</button>';
+
+    let usuarioHtml = '<h3><strong>'+usuario.username+' '+usuario.userLastname+', '+usuario.age+' años</strong></h3>'+botonEliminar+'<p>'+usuario.email+'</p>';
 
     document.querySelector('#div_User').outerHTML = usuarioHtml;
 }
@@ -45,11 +47,22 @@ async function loadOrders(){
             itemsList+= item;
         }
         let orderHtml = '<tr><th scope="row">'+order.orderId+'</th><td>'+order.trackingGuide+'</td><td>'+order.status+'</td><td>'+order.date+'</td><td>'+order.payment+'</td><td>'+
-        itemsList
-        
-        +'</td><td>'+order.total+'</td></tr>';
+        itemsList+'</td><td>'+order.total+'</td></tr>';
         listadoHTML += orderHtml;
     }
 
     document.querySelector('#sessionOrdersTable tbody').outerHTML = listadoHTML;
+}
+
+async function eliminarUsuario(){
+    confirm("¿Está seguro que quiere eliminar su cuenta?");
+
+    const request = await fetch('http://localhost:8090/sakachelas/api/users/delete/10',{
+        method : 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json' 
+        }
+    });
+    
 }
