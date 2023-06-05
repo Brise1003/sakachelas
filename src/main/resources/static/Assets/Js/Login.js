@@ -67,17 +67,7 @@ inputs.forEach((input) => {
 });
 
 
-formulario.addEventListener('submit', (e) => {
-	e.preventDefault();
-
-	if (campos.correo && campos.password) {
-		registerUser();
-		alert("Haz iniciado sesión.");
-		window.location.href = "./Session.html"
-	  }
-});
-
-async function registerUser() {
+async function login() {
 
 	let datos = {};
 	  datos.email = document.getElementById("correo").value;
@@ -92,7 +82,20 @@ async function registerUser() {
 	  },
 	  body: JSON.stringify(datos)
 	});
-	const usuarios = await request.json();
+	const respuesta = await request.text();
+
+	if(respuesta == "Ok"){
+		window.location.href = "Session.html"
+	} else{
+		alert("Las credenciales son incorrectas. por favor intente nuevamente.")
+	}
+	
+
+	// if (campos.correo && campos.password) {
+		
+	// 	alert("Haz iniciado sesión.");
+	// 	window.location.href = "./Session.html"
+	//   }
   
   }
 

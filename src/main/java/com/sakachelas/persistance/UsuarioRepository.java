@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class UsuarioReporitory implements UserRepository {
+public class UsuarioRepository implements UserRepository {
 
     @Autowired
     private UsuarioCrudRepository usuarioCrudRepository;
@@ -33,5 +33,13 @@ public class UsuarioReporitory implements UserRepository {
     @Override
     public void delete(int userId) {
         usuarioCrudRepository.deleteById(userId);
+    }
+
+    @Override
+    public User verifyEmailPassword(User user) {
+        Usuario usuario = userMapper.toUsuario(user);
+        return userMapper.toUser(usuarioCrudRepository.hasAccount(usuario.getCorreoUsuario(), usuario.getPassword()));
+
+
     }
 }

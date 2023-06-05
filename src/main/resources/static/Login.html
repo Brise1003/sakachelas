@@ -57,7 +57,7 @@
     <div class="container">
       <a class="nav-link" style="color: #640002" id="cervezasNavBar" href="./Catalogo.html">CERVEZAS</a>
       <form class="d-flex d-lg-block col-sm-5 col-md-5 col-lg-5 ms-lg-5" role="search">
-        <input class="form-control" type="search" placeholder="¿Qué buscas?" aria-label="Search">
+        <input class="form-control" type="search" placeholder="¿Qué buscas?" aria-label="Search" id="busqueda">
       </form>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,7 +96,7 @@
 
           <div clas="grupo__correo" id="grupo__correo">
             <div class="mb-4">
-              <label for="email" class="form-label w-75">Correo electrónico
+              <label for="email" class=" w-75">Correo electrónico
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
               </label>
 
@@ -108,7 +108,7 @@
 
           <div clas="grupo__password" id="grupo__password">
             <div class="mb-4">
-              <label for="input-group" class="form-label">Password</label>
+              <label for="input-group" class="">Password</label>
               <i class="formulario__validacion-estado fas fa-times-circle"></i>
               <div class="input-group">
                 <input id="password" type="Password" Class="form-control" name="password">
@@ -129,7 +129,7 @@
 
           <center>
             <div class="my-2 p-1">
-              <button type="submit" class="btn btn-outline-dark" onclick="addEventListener">Iniciar sesión</button>
+              <button  class="btn btn-outline-dark" onclick="login()">Iniciar sesión</button>
             </div>
           </center>
 

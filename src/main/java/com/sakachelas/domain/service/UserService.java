@@ -4,6 +4,7 @@ import com.sakachelas.domain.User;
 import com.sakachelas.domain.repository.UserRepository;
 import com.sakachelas.persistance.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -30,5 +31,9 @@ public class UserService {
             userRepository.delete(userId);
             return true;
         }).orElse(false);
+    }
+
+    public User verifyEmailPassword(User user){
+        return userRepository.verifyEmailPassword(user);
     }
 }
