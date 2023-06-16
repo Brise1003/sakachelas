@@ -1,11 +1,13 @@
 package com.sakachelas.persistance.entity;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "pedidos_has_productos")
+@Transactional
 public class PedidoProducto {
 
     @Id

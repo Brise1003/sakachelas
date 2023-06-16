@@ -1,6 +1,7 @@
 package com.sakachelas.persistance.entity;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "pedidos")
+@Transactional
 public class Pedido {
 
     @Id
@@ -35,7 +37,7 @@ public class Pedido {
     @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "pedido", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "pedido", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<PedidoProducto> productos;
 
     public Integer getIdPedido() {

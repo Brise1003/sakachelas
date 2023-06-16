@@ -8,7 +8,8 @@ import java.util.Optional;
 
 public interface UserRepository {
     Optional<User> getUser(int userId);
-    User save(User userId);
+    User save(User user);
     void delete(int userId);
-    User verifyEmailPassword(User user);
+    Optional<User> getUserByEmail(String email);
+    User getByEmail(String email);
 }

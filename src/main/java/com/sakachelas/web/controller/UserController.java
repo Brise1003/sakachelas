@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,19 +28,6 @@ public class UserController {
     public ResponseEntity<User> getUser(@Parameter @PathVariable("id") int userId){
         return userService.getUser(userId).map(user -> new ResponseEntity<>(user, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-//    @RequestMapping(value = "/modify")
-//    public User modifyUser(){
-//
-//    }
-
-    @PostMapping(value = "/save")
-    @Operation(description = "Save a user as whole object.")
-    @ApiResponse(responseCode = "200", description = "Ok")
-    public ResponseEntity<User> saveUser(@RequestBody User user){
-        return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
-
     }
 
     @DeleteMapping("/delete/{id}")

@@ -82,11 +82,14 @@ async function login() {
 	  },
 	  body: JSON.stringify(datos)
 	});
-	const respuesta = await request.text();
+	const respuesta = await request.json();
 
-	if(respuesta == "Ok"){
-		window.location.href = "Session.html"
-	} else{
+	console.log(respuesta);
+	console.log(respuesta.email);
+	if(respuesta.email!=null){
+		// window.location.href = "Session.html";
+		alert("Ha iniciado sesión como "+respuesta.email);
+	} else if(respuesta == "Not Found"){
 		alert("Las credenciales son incorrectas. por favor intente nuevamente.")
 	}
 	

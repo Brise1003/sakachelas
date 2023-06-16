@@ -13,12 +13,13 @@ public interface UserMapper {
 
     @Mappings({
             @Mapping(source = "usuarioId", target = "userId"),
-            @Mapping(source = "nombreUsuario", target = "username"),
+            @Mapping(source = "nombreUsuario", target = "name"),
             @Mapping(source = "apellidoUsuario", target = "userLastname"),
             @Mapping(source = "edad", target = "age"),
             @Mapping(source = "correoUsuario", target = "email"),
             @Mapping(source = "pedido", target = "order"),
-            @Mapping(source = "pedidos", target = "orders")
+            @Mapping(source = "pedidos", target = "orders"),
+            @Mapping(source = "role", target = "role"),
     })
     User toUser(Usuario usuario);
 

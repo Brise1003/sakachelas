@@ -64,5 +64,7 @@ async function eliminarUsuario(){
             'Content-Type': 'application/json' 
         }
     });
+
+    window.location.href = './Index.html1'; 
     
 }

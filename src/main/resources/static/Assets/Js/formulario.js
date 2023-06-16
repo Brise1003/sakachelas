@@ -1,6 +1,11 @@
 const formulario = document.getElementById('singUp');
 const inputs = document.querySelectorAll('#singUp input')
 
+var birthdate;
+var yearAge;  
+var monthAge;
+var dayAge;
+
 const expresiones = {
   usuario: /^[a-zA-Z0-9\_\-]{ 4,16}$/,  // Letras, numeros, guion y guion_bajo
   nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,  // Letras y espacios, pueden llevar acentos.
@@ -88,15 +93,8 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
   e.preventDefault();
-
-  //Validación de edad
-  const hoy = new Date();
-  let birthdate = new Date(document.getElementById("fecha").value);
-  var yearAge = hoy.getFullYear() - birthdate.getFullYear();
-  let monthAge = hoy.getMonth() - birthdate.getMonth();
-  let dayAge = hoy.getDate() - birthdate.getDate();
-  if (dayAge < 0) monthAge -= 1;
-  if (monthAge < 0) yearAge -= 1;
+  
+  validarEdad();
 
   if (yearAge < 18) {
     alert("Para poder registrarse es necesario ser mayor de edad.");
@@ -107,7 +105,7 @@ formulario.addEventListener('submit', (e) => {
   if (campos.nombre && campos.apellido && campos.correo && campos.password && confirma.checked) {
     registerUser();
     alert("Usuario registrado");
-    window.location.href = "./Session.html"
+    //window.location.href = "./Session.html"
   }
 });
 
@@ -134,15 +132,28 @@ function mostrarPassword2() {
   }
 }
 
-async function registerUser() {
+function validarEdad() {
+  //Validación de edad
+  const hoy = new Date();
+  birthdate = new Date(document.getElementById("fecha").value);
+  yearAge = hoy.getFullYear() - birthdate.getFullYear();
+  monthAge = hoy.getMonth() - birthdate.getMonth();
+  dayAge = hoy.getDate() - birthdate.getDate();
+  if (dayAge < 0) monthAge -= 1;
+  if (monthAge < 0) yearAge -= 1;
 
-  let datos = {};
-    datos.username = document.getElementById("nombre").value;
-    datos.userLastname = document.getElementById("apellido").value;
-    datos.age = document.yearAge;
-    datos.email = document.getElementById("correo").value;
-    datos.password = document.getElementById("password").value;
+  return yearAge;
+}
+
+async function registerUser() {
+  validarEdad();
   
+  let datos = {};
+  datos.username = document.getElementById("nombre").value;
+  datos.userLastname = document.getElementById("apellido").value;
+  datos.age = yearAge;
+  datos.email = document.getElementById("correo").value;
+  datos.password = document.getElementById("password").value;
 
   const request = await fetch('http://localhost:8090/sakachelas/api/users/save', {
     method: 'POST',
@@ -153,5 +164,5 @@ async function registerUser() {
     body: JSON.stringify(datos)
   });
   const usuarios = await request.json();
-
+  window.location.href = './login.html';
 }

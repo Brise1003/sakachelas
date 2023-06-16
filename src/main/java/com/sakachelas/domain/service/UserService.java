@@ -15,9 +15,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private UserMapper userMapper;
-
     public Optional<User> getUser(int userId){
         return userRepository.getUser(userId);
     }
@@ -33,7 +30,4 @@ public class UserService {
         }).orElse(false);
     }
 
-    public User verifyEmailPassword(User user){
-        return userRepository.verifyEmailPassword(user);
-    }
 }

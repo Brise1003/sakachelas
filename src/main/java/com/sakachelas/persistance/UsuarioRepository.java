@@ -5,6 +5,7 @@ import com.sakachelas.domain.repository.UserRepository;
 import com.sakachelas.persistance.crud.UsuarioCrudRepository;
 import com.sakachelas.persistance.entity.Usuario;
 import com.sakachelas.persistance.mapper.UserMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -25,8 +26,8 @@ public class UsuarioRepository implements UserRepository {
     }
 
     @Override
-    public User save(User userId) {
-        Usuario usuario = userMapper.toUsuario(userId);
+    public User save(User user) {
+        Usuario usuario = userMapper.toUsuario(user);
         return userMapper.toUser(usuarioCrudRepository.save(usuario));
     }
 
@@ -36,10 +37,14 @@ public class UsuarioRepository implements UserRepository {
     }
 
     @Override
-    public User verifyEmailPassword(User user) {
-        Usuario usuario = userMapper.toUsuario(user);
-        return userMapper.toUser(usuarioCrudRepository.hasAccount(usuario.getCorreoUsuario(), usuario.getPassword()));
-
-
+    public Optional<User> getUserByEmail(String email) {
+        return Optional.of(userMapper.toUser(usuarioCrudRepository.hasAccount(email)));
     }
+
+    @Override
+    public User getByEmail(String email) {
+        return userMapper.toUser(usuarioCrudRepository.hasAccount(email));
+    }
+
+
 }

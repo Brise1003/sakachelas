@@ -1,11 +1,26 @@
 package com.sakachelas.persistance.entity;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "usuarios")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Transactional
 public class Usuario {
 
     @Id
@@ -28,8 +43,11 @@ public class Usuario {
 
     private Integer pedido;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private List<Pedido> pedidos;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     public Integer getUsuarioId() {
         return usuarioId;
@@ -94,4 +112,13 @@ public class Usuario {
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
 }
