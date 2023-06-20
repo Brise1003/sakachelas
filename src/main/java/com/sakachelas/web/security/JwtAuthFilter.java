@@ -1,6 +1,6 @@
 package com.sakachelas.web.security;
 
-import com.sakachelas.web.security.service.JwtService;
+import com.sakachelas.domain.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

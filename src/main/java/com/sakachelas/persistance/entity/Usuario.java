@@ -1,26 +1,17 @@
 package com.sakachelas.persistance.entity;
 
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "usuarios")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Transactional
 public class Usuario {
 
     @Id
@@ -43,7 +34,7 @@ public class Usuario {
 
     private Integer pedido;
 
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
 
     @Enumerated(EnumType.STRING)

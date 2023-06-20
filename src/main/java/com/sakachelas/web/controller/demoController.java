@@ -1,4 +1,4 @@
-package com.sakachelas.web.security.auth.controller;
+package com.sakachelas.web.controller;
 
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;

@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "pedidos_has_productos")
-@Transactional
 public class PedidoProducto {
 
     @Id

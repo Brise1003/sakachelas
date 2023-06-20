@@ -1,4 +1,4 @@
-package com.sakachelas.web.security.service;
+package com.sakachelas.domain.service;
 
 import com.sakachelas.domain.User;
 import com.sakachelas.persistance.UsuarioRepository;
@@ -6,9 +6,7 @@ import com.sakachelas.persistance.entity.Role;
 import com.sakachelas.web.security.auth.AuthenticationRequest;
 import com.sakachelas.web.security.auth.AuthenticationResponse;
 import com.sakachelas.web.security.auth.RegisterRequest;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.security.SecurityConfig;
 import org.springframework.security.authentication.AuthenticationManager;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

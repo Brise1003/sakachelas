@@ -1,9 +1,9 @@
-package com.sakachelas.web.security.auth.controller;
+package com.sakachelas.web.controller;
 
 import com.sakachelas.web.security.auth.AuthenticationRequest;
 import com.sakachelas.web.security.auth.AuthenticationResponse;
 import com.sakachelas.web.security.auth.RegisterRequest;
-import com.sakachelas.web.security.service.AuthenticationService;
+import com.sakachelas.domain.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

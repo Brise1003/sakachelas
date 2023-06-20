@@ -1,4 +1,4 @@
-package com.sakachelas.web.security.service;
+package com.sakachelas.domain.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
