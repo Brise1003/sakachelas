@@ -13,7 +13,7 @@ public class Cervecero {
     @Column(name = "id_cervecero", nullable = false, unique = true)
     private Integer cerveceroId;
 
-    @Column(name = "correo")
+    @Column(name = "correo", length = 45)
     private String correoCervecero;
 
     private String telefono;

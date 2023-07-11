@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -25,7 +27,8 @@ public class Usuario {
     @Column(name = "apellido")
     private String apellidoUsuario;
 
-    private Integer edad;
+    @Column(name = "fecha_nacimiento", columnDefinition = "DATETIME")
+    private LocalDateTime fechaNacimiento;
 
     @Column(name = "correo")
     private String correoUsuario;
@@ -36,9 +39,6 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
 
     public Integer getUsuarioId() {
         return usuarioId;
@@ -64,12 +64,12 @@ public class Usuario {
         this.apellidoUsuario = apellidoUsuario;
     }
 
-    public Integer getEdad() {
-        return edad;
+    public LocalDateTime getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEdad(Integer edad) {
-        this.edad = edad;
+    public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getCorreoUsuario() {
@@ -102,14 +102,6 @@ public class Usuario {
 
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 
 }

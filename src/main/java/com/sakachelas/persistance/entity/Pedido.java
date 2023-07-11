@@ -21,6 +21,7 @@ public class Pedido {
     @Column(name = "estatus")
     private String status;
 
+    @Column(name = "fecha")
     private Timestamp fecha;
 
     @Column(name = "id_usuario")

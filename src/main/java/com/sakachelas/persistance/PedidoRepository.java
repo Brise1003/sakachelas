@@ -36,4 +36,13 @@ public class PedidoRepository implements OrderRepository {
         return mapper.toOrder(pedidoCrudRepository.save(pedido));
     }
 
+    @Override
+    public Integer getLastOrderId() {
+        Order lastOrder = this.pedidoCrudRepository.getLastOrderId().map(Pedido->mapper.toOrder(Pedido)).orElse(null);
+        assert lastOrder != null;
+        Integer lastOrderId = lastOrder.getOrderId();
+        return lastOrderId;
+    }
+
+
 }

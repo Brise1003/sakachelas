@@ -3,9 +3,12 @@ package com.sakachelas.persistance;
 import com.sakachelas.domain.Product;
 import com.sakachelas.domain.repository.ProductRepository;
 import com.sakachelas.persistance.crud.ProductoCrudRepository;
+import com.sakachelas.persistance.crud.ProductoPageSortRepository;
 import com.sakachelas.persistance.entity.Producto;
 import com.sakachelas.persistance.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +17,9 @@ import java.util.Optional;
 public class ProductoRepository implements ProductRepository {
     @Autowired
     private ProductoCrudRepository productoCrudRepository;
+
+    @Autowired
+    private ProductoPageSortRepository productoPageSortRepository;
 
     @Autowired
     private ProductMapper mapper;
@@ -34,6 +40,12 @@ public class ProductoRepository implements ProductRepository {
     public Optional<List<Product>> getByStyle(String style) {
         List<Producto> productos = productoCrudRepository.getByEstilo(style);
         return Optional.of(mapper.toProducts(productos));
+    }
+
+    @Override
+    public Optional<Page<Product>> findBy(Pageable pageable) {
+        Page<Producto> productos = productoPageSortRepository.findBy(pageable);
+        return Optional.of(productos.map(mapper::toProduct));
     }
 
     @Override

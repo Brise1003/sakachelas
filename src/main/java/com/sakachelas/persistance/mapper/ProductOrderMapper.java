@@ -14,9 +14,8 @@ public interface ProductOrderMapper {
             @Mapping(source = "idProducto", target = "productId"),
             @Mapping(source = "nombre", target = "name"),
             @Mapping(source = "cantidad", target = "quantity"),
-            @Mapping(source = "totalcerveza", target = "beertotal"),
-            @Mapping(target = "order", ignore = true),
-            @Mapping(target = "product", ignore = true)
+            @Mapping(source = "precioCerveza", target = "beerPrice"),
+            @Mapping(source = "totalCerveza", target = "beerTotal"),
     })
     ProductOrder toProductOrder(PedidoProducto pedidoProducto);
 

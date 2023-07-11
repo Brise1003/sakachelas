@@ -2,8 +2,14 @@ package com.sakachelas.domain.service;
 
 import com.sakachelas.domain.Product;
 import com.sakachelas.domain.repository.ProductRepository;
+import com.sakachelas.persistance.crud.ProductoPageSortRepository;
+import com.sakachelas.persistance.entity.Producto;
 import com.sakachelas.persistance.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -28,6 +34,13 @@ public class ProductService {
 
     public Optional<List<Product>> getByStyle(String style){
         return productRepository.getByStyle(style);
+    }
+
+    public Optional<Page<Product>> getAvailable(int page, int elements, String sortBy, String sortDirection){
+        Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
+        Pageable pageRequest = PageRequest.of(page, elements, sort);
+
+        return productRepository.findBy(pageRequest);
     }
 
     public Optional<Product> getProduct(int productId){

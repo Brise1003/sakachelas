@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -40,10 +41,17 @@ public class OrderController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/lastOrderId")
+    public ResponseEntity<Integer> getLastOrderId(){
+        return new ResponseEntity<>(this.orderService.getLastOrderId(), HttpStatus.OK);
+    }
+
     @PostMapping("/save")
     @Operation(description = "Save an order with ful body.")
     @ApiResponse(responseCode = "200", description = "Ok")
     public ResponseEntity<Order> save(@RequestBody Order order){
         return new ResponseEntity<>(orderService.save(order), HttpStatus.OK);
     }
+
+
 }
