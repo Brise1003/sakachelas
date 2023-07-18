@@ -7,19 +7,18 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-
 @Mapper(componentModel = "spring", uses = {OrderMapper.class})
 public interface UserMapper {
 
     @Mappings({
             @Mapping(source = "usuarioId", target = "userId"),
             @Mapping(source = "nombreUsuario", target = "name"),
-            @Mapping(source = "apellidoUsuario", target = "userLastname"),
-            @Mapping(source = "edad", target = "age"),
+            @Mapping(source = "apellidoUsuario", target = "lastname"),
+            @Mapping(source = "fechaNacimiento", target = "birthday"),
             @Mapping(source = "correoUsuario", target = "email"),
             @Mapping(source = "pedido", target = "order"),
             @Mapping(source = "pedidos", target = "orders"),
-            @Mapping(source = "role", target = "role"),
+            @Mapping(target = "roles", source = "roles")
     })
     User toUser(Usuario usuario);
 

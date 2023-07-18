@@ -16,7 +16,7 @@ public class Producto {
     @Column(name = "nombre")
     private String nombreProducto;
 
-    @Column(name = "cantidad_stock")
+    @Column(name = "cantidad_stock", columnDefinition = "TINYINT")
     private Integer cantidadStock;
 
     private String descripcion;
@@ -27,6 +27,7 @@ public class Producto {
 
     private String imagen;
 
+    @Column(columnDefinition = "DECIMAL(10,2)")
     private BigDecimal precio;
 
     @Column(name = "id_cervecero")

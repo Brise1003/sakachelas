@@ -2,12 +2,14 @@ package com.sakachelas.web.controller;
 
 import com.sakachelas.domain.Product;
 import com.sakachelas.domain.service.ProductService;
+import com.sakachelas.persistance.entity.Producto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -55,6 +57,18 @@ public class ProductController {
                 : new ResponseEntity<>(products, HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/available")
+    public  ResponseEntity<Page<Product>> getAvailable(@RequestParam(defaultValue = "0") int page,
+                                                        @RequestParam(defaultValue = "10") int elements,
+                                                        @RequestParam(defaultValue = "precio") String sortby,
+                                                        @RequestParam(defaultValue = "ASC") String sortDirection
+    ){
+        Page<Product> products = productService.getAvailable(page, elements, sortby, sortDirection).orElse(null);
+        return products != null && !products.isEmpty() ?
+                new ResponseEntity<>(products, HttpStatus.OK)
+                : new ResponseEntity<>(products, HttpStatus.NOT_FOUND);
+    }
+
     @GetMapping("/{id}")
     @Operation(description = "Search a beer with id 1 - 9.")
     @ApiResponses({
@@ -69,9 +83,17 @@ public class ProductController {
 
     @PostMapping("/save")
     @Operation(description = "Save a beer with whole object.")
-    @ApiResponse(responseCode = "200", description = "Ok")
+    @ApiResponse(responseCode = "201", description = "CREATED")
     public ResponseEntity<Product> save(@RequestBody Product product){
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Product> update(@RequestBody Product product){
+        if(product.getProductId() != null && this.productService.exists(product.getProductId())){
+            return ResponseEntity.ok(this.productService.save(product));
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @DeleteMapping("/delete/{id}")
@@ -80,7 +102,7 @@ public class ProductController {
             @ApiResponse(responseCode = "200", description = "Ok"),
             @ApiResponse(responseCode = "404", description = "Not found")
     })
-    public ResponseEntity delete(@Parameter @PathVariable("id") int productId){
+    public ResponseEntity<Void> delete(@Parameter @PathVariable("id") int productId){
         return productService.delete(productId) ?
                 new ResponseEntity<>(HttpStatus.OK) :
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -8,9 +8,8 @@ public class ProductOrder {
     private int productId;
     private String name;
     private int quantity;
-    private BigDecimal beertotal;
-    private Order order;
-    private Product product;
+    private BigDecimal beerPrice;
+    private BigDecimal beerTotal;
 
     public int getId() {
         return id;
@@ -52,27 +51,19 @@ public class ProductOrder {
         this.quantity = quantity;
     }
 
-    public BigDecimal getBeertotal() {
-        return beertotal;
+    public BigDecimal getBeerPrice() {
+        return beerPrice;
     }
 
-    public void setBeertotal(BigDecimal beertotal) {
-        this.beertotal = beertotal;
+    public void setBeerPrice(BigDecimal beerPrice) {
+        this.beerPrice = beerPrice;
     }
 
-    public Order getOrder() {
-        return order;
+    public BigDecimal getBeerTotal() {
+        return beerTotal;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setBeerTotal(BigDecimal beerTotal) {
+        this.beerTotal = beerTotal;
     }
 }

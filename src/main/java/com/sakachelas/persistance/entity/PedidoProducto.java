@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "pedidos_has_productos")
-@Transactional
 public class PedidoProducto {
 
     @Id
@@ -25,7 +24,11 @@ public class PedidoProducto {
 
     private Integer cantidad;
 
-    private BigDecimal totalcerveza;
+    @Column(name = "precio_cerveza")
+    private BigDecimal precioCerveza;
+
+    @Column(name = "total_cerveza")
+    private BigDecimal totalCerveza;
 
     @ManyToOne
     @JoinColumn(name = "id_pedido", insertable = false, updatable = false)
@@ -75,12 +78,20 @@ public class PedidoProducto {
         this.cantidad = cantidad;
     }
 
-    public BigDecimal getTotalcerveza() {
-        return totalcerveza;
+    public BigDecimal getPrecioCerveza() {
+        return precioCerveza;
     }
 
-    public void setTotalcerveza(BigDecimal totalcerveza) {
-        this.totalcerveza = totalcerveza;
+    public void setPrecioCerveza(BigDecimal precioCerveza) {
+        this.precioCerveza = precioCerveza;
+    }
+
+    public BigDecimal getTotalCerveza() {
+        return totalCerveza;
+    }
+
+    public void setTotalCerveza(BigDecimal totalCerveza) {
+        this.totalCerveza = totalCerveza;
     }
 
     public Pedido getPedido() {

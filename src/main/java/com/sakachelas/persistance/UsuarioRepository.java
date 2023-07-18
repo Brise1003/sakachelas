@@ -37,13 +37,9 @@ public class UsuarioRepository implements UserRepository {
     }
 
     @Override
-    public Optional<User> getUserByEmail(String email) {
-        return Optional.of(userMapper.toUser(usuarioCrudRepository.hasAccount(email)));
-    }
-
-    @Override
-    public User getByEmail(String email) {
-        return userMapper.toUser(usuarioCrudRepository.hasAccount(email));
+    @Transactional
+    public Optional<User> hasAccount(String email) {
+        return Optional.ofNullable(userMapper.toUser(this.usuarioCrudRepository.hasAccount(email)));
     }
 
 
