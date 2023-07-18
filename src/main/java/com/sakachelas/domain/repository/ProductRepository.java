@@ -1,6 +1,7 @@
 package com.sakachelas.domain.repository;
 
 import com.sakachelas.domain.Product;
+import jakarta.persistence.Id;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -15,4 +16,5 @@ public interface ProductRepository {
     Optional<Product> getProduct(int productId);
     Product save(Product product);
     void delete(int productId);
+    boolean exists(int productId);
 }

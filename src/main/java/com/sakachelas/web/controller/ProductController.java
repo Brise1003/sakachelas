@@ -88,6 +88,14 @@ public class ProductController {
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<Product> update(@RequestBody Product product){
+        if(product.getProductId() != null && this.productService.exists(product.getProductId())){
+            return ResponseEntity.ok(this.productService.save(product));
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
     @DeleteMapping("/delete/{id}")
     @Operation(description = "Delete a beer by id from catalog.")
     @ApiResponses({

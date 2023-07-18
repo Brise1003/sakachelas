@@ -19,6 +19,7 @@ public class User {
     private String password;
     private int order;
     private List<Order> orders;
+    private List<UserRole> roles;
 
     public int getUserId() {
         return userId;
@@ -82,5 +83,28 @@ public class User {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public List<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UserRole> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", birthday=" + birthday +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", order=" + order +
+                ", orders=" + orders +
+                ", roles=" + roles +
+                '}';
     }
 }

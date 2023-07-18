@@ -3,7 +3,7 @@ package com.sakachelas.domain;
 import java.math.BigDecimal;
 
 public class Product {
-    private int productId;
+    private Integer productId;
     private String name;
     private int stock;
     private String description;
@@ -13,11 +13,11 @@ public class Product {
     private BigDecimal price;
     private int brewerId;
 
-    public int getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 

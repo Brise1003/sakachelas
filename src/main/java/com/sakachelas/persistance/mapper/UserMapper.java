@@ -17,7 +17,8 @@ public interface UserMapper {
             @Mapping(source = "fechaNacimiento", target = "birthday"),
             @Mapping(source = "correoUsuario", target = "email"),
             @Mapping(source = "pedido", target = "order"),
-            @Mapping(source = "pedidos", target = "orders")
+            @Mapping(source = "pedidos", target = "orders"),
+            @Mapping(target = "roles", source = "roles")
     })
     User toUser(Usuario usuario);
 

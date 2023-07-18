@@ -51,6 +51,10 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    public Boolean exists(int productId){
+        return this.productRepository.exists(productId);
+    }
+
     public boolean delete(int productId){
         return getProduct(productId).map(product -> {
             productRepository.delete(productId);

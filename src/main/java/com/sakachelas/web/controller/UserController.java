@@ -1,6 +1,8 @@
 package com.sakachelas.web.controller;
 
+import com.sakachelas.domain.Order;
 import com.sakachelas.domain.User;
+import com.sakachelas.domain.service.OrderService;
 import com.sakachelas.domain.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -11,12 +13,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private OrderService orderService;
 
     @GetMapping(value = "/{id}")
     @Operation(description = "Get account")
@@ -39,6 +46,18 @@ public class UserController {
         return userService.delete(userId) ?
                 new ResponseEntity<>(HttpStatus.OK):
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/order/{id}")
+    @Operation(description = "Search all orders by userId.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Ok"),
+            @ApiResponse(responseCode = "404", description = "User not found")
+    })
+    public ResponseEntity<List<Order>> getOrdersByClient(@Parameter @PathVariable("id") int userId){
+        return orderService.getByClient(userId)
+                .map(orders -> new ResponseEntity<>(orders ,HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     
 }

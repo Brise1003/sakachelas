@@ -60,7 +60,14 @@ public class ProductoRepository implements ProductRepository {
     }
 
     @Override
+    public boolean exists(int productId) {
+        return this.productoCrudRepository.existsById(productId);
+    }
+
+    @Override
     public void delete(int productId) {
         productoCrudRepository.deleteById(productId);
     }
+
+
 }

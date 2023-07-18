@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -39,6 +38,9 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
+
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    private List<RoleUsuario> roles;
 
     public Integer getUsuarioId() {
         return usuarioId;
@@ -104,4 +106,11 @@ public class Usuario {
         this.pedidos = pedidos;
     }
 
+    public List<RoleUsuario> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleUsuario> roles) {
+        this.roles = roles;
+    }
 }
