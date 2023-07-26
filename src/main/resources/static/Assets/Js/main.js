@@ -50,21 +50,14 @@ function obtener_localstorage() {
 
 }
 
-
-
-
-
 function guardar_localstorage() {
-
   let haIngresado = "yes";
-
   localStorage.setItem("haIngresado", haIngresado);
-
+  let catalogo = "all";
+  localStorage.setItem("filtro", catalogo);
 }
 
-
-
-//Respuesta No redireccionar a youtube
+//Respuesta No: redireccionar a youtube
 function redirect() {
   location.href = "https://www.youtube.com/watch?v=k7exgdlVyU0&ab_channel=DossierNet";
 }
@@ -92,5 +85,8 @@ function pago(){
     })
 }
    
-
+function updateFiltro(catalogo){
+  localStorage.setItem("filtro", catalogo);
+  window.location.href = './Catalogo.html'; 
+}
 

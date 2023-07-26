@@ -29,10 +29,21 @@ public class UserController {
     @Operation(description = "Get account")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Ok"),
-            @ApiResponse(responseCode = "404", description = "Beer not found")
+            @ApiResponse(responseCode = "404", description = "User not found")
     })
     public ResponseEntity<User> getUser(@Parameter @PathVariable("id") int userId){
         return userService.getUser(userId).map(user -> new ResponseEntity<>(user, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @RequestMapping("/email/{email}")
+    @Operation(description = "Get account")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Ok"),
+            @ApiResponse(responseCode = "404", description = "Beer not found")
+    })
+    public ResponseEntity<User> getUserByEmail(@Parameter @PathVariable("email") String email){
+        return userService.getUserByemail(email).map(user -> new ResponseEntity<>(user, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 

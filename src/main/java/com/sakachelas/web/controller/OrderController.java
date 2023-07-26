@@ -41,6 +41,18 @@ public class OrderController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @RequestMapping("/email/{email}")
+    @Operation(description = "Search all orders by userEmail.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Ok"),
+            @ApiResponse(responseCode = "404", description = "User not found")
+    })
+    public ResponseEntity<List<Order>> getByClientEmail(@Parameter @PathVariable("email") String email){
+        return orderService.getByEmail(email)
+                .map(orders -> new ResponseEntity<>(orders ,HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     @GetMapping("/lastOrderId")
     public ResponseEntity<Integer> getLastOrderId(){
         return new ResponseEntity<>(this.orderService.getLastOrderId(), HttpStatus.OK);

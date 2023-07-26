@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
+import javax.swing.plaf.OptionPaneUI;
 import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
@@ -24,9 +25,12 @@ public class OrderService {
         return orderRepository.getAll();
     }
 
-    @Secured("ROLE_ADMIN")
     public Optional<List<Order>> getByClient(int userId){
         return orderRepository.getByClient(userId);
+    }
+
+    public Optional<List<Order>> getByEmail(String email){
+        return orderRepository.getByEmail(email);
     }
 
     public Order save(Order order){

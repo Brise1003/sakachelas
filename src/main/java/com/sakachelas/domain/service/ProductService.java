@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 
@@ -55,6 +56,7 @@ public class ProductService {
         return this.productRepository.exists(productId);
     }
 
+    @Secured("ROLE_ADMIN")
     public boolean delete(int productId){
         return getProduct(productId).map(product -> {
             productRepository.delete(productId);

@@ -26,9 +26,15 @@ public class UsuarioRepository implements UserRepository {
     }
 
     @Override
-    public User save(User user) {
+    public Optional<User> getUserByEmail(String email) {
+        User user = userMapper.toUser(usuarioCrudRepository.hasAccount(email));
+        return Optional.of(user);
+    }
+
+    @Override
+    public void save(User user) {
         Usuario usuario = userMapper.toUsuario(user);
-        return userMapper.toUser(usuarioCrudRepository.save(usuario));
+        usuarioCrudRepository.save(usuario);
     }
 
     @Override
