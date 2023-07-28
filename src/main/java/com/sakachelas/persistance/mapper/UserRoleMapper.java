@@ -7,17 +7,18 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-@Mapper(componentModel = "spring", uses = {UserMapper.class})
+@Mapper(componentModel = "spring")
 public interface UserRoleMapper {
 
     @Mappings({
             @Mapping(source = "username", target = "username"),
             @Mapping(source = "role", target = "role"),
             @Mapping(source = "fechaInicio", target = "grantedDate"),
-            @Mapping(source = "usuario", target = "user")
+            @Mapping(target = "user", ignore = true)
     })
     UserRole toUserRole(RoleUsuario roleUsuario);
 
     @InheritInverseConfiguration
+    @Mapping(target = "usuario", ignore = true)
     RoleUsuario toRoleUsuario(UserRole userRole);
 }

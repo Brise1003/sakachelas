@@ -1,18 +1,19 @@
 package com.sakachelas.persistance.entity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "role_usuario")
-@IdClass(RoleUsuarioId.class)
 @NoArgsConstructor
+@AllArgsConstructor
 public class RoleUsuario {
+
     @Id
     @Column(nullable = false, length = 200)
     private String username;
 
-    @Id
     @Column(nullable = false, length = 20)
     private String role;
 
@@ -20,7 +21,7 @@ public class RoleUsuario {
     private LocalDateTime fechaInicio;
 
     @ManyToOne
-    @JoinColumn(name = "username", referencedColumnName = "correo", insertable = false, updatable = false)
+    @JoinColumn(name = "username", referencedColumnName = "correo" ,insertable=false, updatable=false)
     private Usuario usuario;
 
 

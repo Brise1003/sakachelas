@@ -70,30 +70,34 @@ inputs.forEach((input) => {
 async function login() {
 
 	let datos = {};
-	  datos.email = document.getElementById("correo").value;
+	  datos.username = document.getElementById("correo").value;
 	  datos.password = document.getElementById("password").value;
 	
+	  console.log(datos);
   
-	const request = await fetch('http://localhost:8090/sakachelas/api/users/login', {
+	const request = await fetch('http://localhost:8090/sakachelas/api/auth/signin', {
 	  method: 'POST',
 	  headers: {
 		'Accept': 'application/json',
-		'Content-Type': 'application/json'
+		'Content-Type': 'application/json',
 	  },
 	  body: JSON.stringify(datos)
-	});
-	const respuesta = await request.json();
+	}).catch((error) => {
+		console.error('Error:', error)});
 
+	const respuesta = await request.text();
+	
 	console.log(respuesta);
-	console.log(respuesta.email);
-	if(respuesta.email!=null){
-		// window.location.href = "Session.html";
-		alert("Ha iniciado sesión como "+respuesta.email);
-	} else if(respuesta == "Not Found"){
+	
+	if(respuesta!=null){
+		localStorage.token = respuesta;
+		localStorage.email = datos.username;
+		alert("Ha iniciado sesión como "+ localStorage.email);
+		window.location.href = "Session.html";
+	} else {
 		alert("Las credenciales son incorrectas. por favor intente nuevamente.")
 	}
 	
-
 	// if (campos.correo && campos.password) {
 		
 	// 	alert("Haz iniciado sesión.");

@@ -29,6 +29,11 @@ public class PedidoRepository implements OrderRepository {
     }
 
     @Override
+    public Optional<List<Order>> getByEmail(String email) {
+        return pedidoCrudRepository.getByEmail(email).map(Pedidos -> mapper.toOrders(Pedidos));
+    }
+
+    @Override
     public Order save(Order order) {
         Pedido pedido = mapper.toPedido(order);
         pedido.getProductos().forEach(producto -> producto.setPedido(pedido));

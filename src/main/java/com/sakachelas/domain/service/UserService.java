@@ -19,8 +19,12 @@ public class UserService {
         return userRepository.getUser(userId);
     }
 
-    public User save(User user){
-        return userRepository.save(user);
+    public Optional<User> getUserByemail(String email){
+        return userRepository.getUserByEmail(email);
+    }
+
+    public void save(User user){
+        userRepository.save(user);
     }
 
     public boolean delete(int userId){

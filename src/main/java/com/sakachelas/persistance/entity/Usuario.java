@@ -1,12 +1,17 @@
 package com.sakachelas.persistance.entity;
 
+import com.sakachelas.domain.User;
+import com.sakachelas.domain.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
+import javax.management.relation.Role;
 import java.time.LocalDateTime;
 import java.util.List;
-
 
 @Entity
 @Table(name = "usuarios")
@@ -113,4 +118,5 @@ public class Usuario {
     public void setRoles(List<RoleUsuario> roles) {
         this.roles = roles;
     }
+
 }

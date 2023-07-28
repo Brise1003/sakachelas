@@ -33,7 +33,7 @@ public class User {
         return name;
     }
 
-    public void setName(String username) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -91,20 +91,5 @@ public class User {
 
     public void setRoles(List<UserRole> roles) {
         this.roles = roles;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", name='" + name + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", birthday=" + birthday +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", order=" + order +
-                ", orders=" + orders +
-                ", roles=" + roles +
-                '}';
     }
 }

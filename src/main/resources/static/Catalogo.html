@@ -58,7 +58,7 @@
 
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="nav-link" id="cervezasNavBar" href="./Catalogo.html" style="color: #640002">CERVEZAS</a>
+      <a class="nav-link" id="cervezasNavBar" onclick="updateFiltro('all')" style="color: #640002">CERVEZAS</a>
       <form class="d-flex d-lg-block col-sm-5 col-md-5 col-lg-5 ms-lg-5" role="search">
         <input class="form-control" type="search" placeholder="¿Qué buscas?" aria-label="Search">
       </form>
@@ -100,9 +100,9 @@
               </button>
 
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="">Kali Brews</a></li>
-                <li><a class="dropdown-item" href="">Copado</a></li>
-                <li><a class="dropdown-item" href="">Fractal</a></li>
+                <li><a class="dropdown-item" onclick="updateFiltro('brand/kali Brews')">Kali Brews</a></li>
+                <li><a class="dropdown-item" onclick="updateFiltro('brand/Copado')">Copado</a></li>
+                <li><a class="dropdown-item" onclick="updateFiltro('brand/Fractal')">Fractal</a></li>
               </ul>
             </div>
           </div>
@@ -112,21 +112,10 @@
             </button>
 
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="">Mayor a menor </a></li>
-              <li><a class="dropdown-item" href="">Menor a mayor</a></li>
+              <li><a class="dropdown-item" onclick="updateFiltro('ASC')">Menor a mayor</a></li>
+              <li><a class="dropdown-item" onclick="updateFiltro('DESC')">Mayor a menor </a></li>
             </ul>
           </div>
-
-          <div class="dropdown">
-            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">Tipo
-          </button> 
-
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="">Negra</a></li>
-              <li><a class="dropdown-item" href="">Lager</a></li>
-              <li><a class="dropdown-item" href="">Abadia</a></li>
-            </ul>
-          </div> 
 
           <div class="dropdown">
             <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
@@ -134,47 +123,48 @@
             </button>
 
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="">Stout</a></li>
-              <li><a class="dropdown-item" href="">American Pale Ale</a></li>
-              <li><a class="dropdown-item" href="">Wheat Ale</a></li>
-              <li><a class="dropdown-item" href="">Hefeweizen</a></li>
-              <li><a class="dropdown-item" href="">IPA</a></li>
-              <li><a class="dropdown-item" href="">Cream Ale</a></li>
-              <li><a class="dropdown-item" href="">American Brown Ale</a></li>
+              <li><a class="dropdown-item" onclick="updateFiltro('style/Stout')">Stout</a></li>
+              <li><a class="dropdown-item" onclick="updateFiltro('style/Pale Ale')">Pale Ale</a></li>
+              <li><a class="dropdown-item" onclick="updateFiltro('style/Wheat')">Wheat</a></li>
+              <li><a class="dropdown-item" onclick="updateFiltro('style/IPA')">IPA</a></li>
+
+
             </ul>
           </div>
 
 
         </div>
 
-<!------------------------ Catálogo---------------------->   
+        <!------------------------ Catálogo---------------------->
 
         <div class="col-sm-10">
           <section class="NovidadesSection">
             <main class="mainDestacados">
               <h3>Catálogo</h3>
-              <section class="containerProdutos">
+              <section class="containerProdutos" id="containerProductos">
                 <!--container -->
                 <div class="album py-5">
                   <div class="container">
                     <div class="row" id="div_Productos">
                     </div>
                   </div>
-                </div>
+                </div> 
                 <!--container -->
-                <div class="album py-5">
+                <!-- <div class="album py-5">
                   <div class="container">
                     <div class="row" id="div_Productos">
+                      
                     </div>
                   </div>
-                </div>
+                </div>  -->
                 <!--container -->
-                <div class="album py-5">
+                <!-- <div class="album py-5">
                   <div class="container">
                     <div class="row" id="div_Productos">
-                    </div> <!-- row -->
+                    </div> 
                   </div>
-                </div>
+                </div>  -->
+
               </section>
             </main>
           </section>
