@@ -39,13 +39,30 @@
         </a>
       </div>
       <div class="ms-auto">
-        <a class="navbar-item m-1" href="./Login.html">
-          <img src="./Assets/Img/iconUser.png" width="30px" height="30px">
+        <a href="./Login.html">
+          <img src="./Assets/Img/iconUser.png" id="icon-login" width="30" height="30">
         </a>
-        <a class="cart" href="./Cart.html">
-          <img src="./Assets/Img/cart.png" width="30px" height="30px"><span
-            class="position-absolute top-25 end-175 translate-middle" id="contador">0</span>
-        </a>
+      </div>
+      <div class="mr-auto">
+        <div class="container-icon" id="icon-cart">
+          <div class="container-cart-icon">
+            <img class="container-icon mr-5" src="./Assets/Img/shoppingbag.png" width="30" height="30">
+            <div class="count-products">
+              <span id="contador-productos">0</span>
+            </div>
+          </div>
+          <div class="container-cart-products hidden-cart">
+            <div class="row-product hidden">
+              <!----------------  Cart Products  ------------------->
+            </div>
+            <div class="cart-total hidden">
+              <h3>Total:</h3>
+              <span class="total-pagar">$ 00.00 MXN</span>
+              <button type="button" class="btn btn-dark btn-sm" onclick="window.location.href='./Carrito.html'">Carrito</button>
+            </div>
+            <p class="cart-empty">El carrito está vacío</p>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -181,38 +198,38 @@
                             <label for="estado" id="estado">Estado*</label>
                                 <select id="estado" class="form-control custom-select"  required  name="estado">
                                     <option value="">Seleccione su estado...</option>
-                                    <option value="1">Aguascalientes</option>
-                                    <option value="2">Baja California</option>
-                                    <option value="3">Baja California Sur</option>
-                                    <option value="4">Campeche</option>
-                                    <option value="5">Chiapas</option>
-                                    <option value="6">Chihuahua</option>
-                                    <option value="7">Ciudad de México</option>
-                                    <option value="8">Coahuila</option>
-                                    <option value="9">Colima</option>
-                                    <option value="10">Durango</option>
-                                    <option value="11">Guanajuato</option>
-                                    <option value="12">Guerrero</option>
-                                    <option value="13">Hidalgo</option>
-                                    <option value="14">Jalisco</option>
-                                    <option value="15">México</option>
-                                    <option value="16">Michoacán</option>
-                                    <option value="17">Morelos</option>
-                                    <option value="18">Nayarit</option>
-                                    <option value="19">Nuevo León</option>
-                                    <option value="20">Oaxaca</option>
-                                    <option value="21">Puebla</option>
-                                    <option value="22">Querétaro</option>
-                                    <option value="23">Quintana Roo</option>
-                                    <option value="24">San Luis Potosí</option>
-                                    <option value="25">Sinaloa</option>
-                                    <option value="26">Sonora</option>
-                                    <option value="27">Tabasco</option>
-                                    <option value="28">Tamaulipas</option>
-                                    <option value="29">Tlaxcala</option>                                        
-                                    <option value="30">Veracruz</option>
-                                    <option value="31">Yucatán</option>
-                                    <option value="32">Zacatecas</option>
+                                    <option value="1 Aguascalientes">Aguascalientes</option>
+                                    <option value="2 Baja California">Baja California</option>
+                                    <option value="3 Baja California Sur">Baja California Sur</option>
+                                    <option value="4 Campeche">Campeche</option>
+                                    <option value="5 Chiapas">Chiapas</option>
+                                    <option value="6 Chihuahua">Chihuahua</option>
+                                    <option value="7 Ciudad de México">Ciudad de México</option>
+                                    <option value="8 Coahuila">Coahuila</option>
+                                    <option value="9 Colima">Colima</option>
+                                    <option value="10 Durango">Durango</option>
+                                    <option value="11 Guanajuato">Guanajuato</option>
+                                    <option value="12 Guerrero">Guerrero</option>
+                                    <option value="13 Hidalgo">Hidalgo</option>
+                                    <option value="14 Jalisco">Jalisco</option>
+                                    <option value="15 México">México</option>
+                                    <option value="16 Michoacán">Michoacán</option>
+                                    <option value="17 Morelos">Morelos</option>
+                                    <option value="18 Nayarit">Nayarit</option>
+                                    <option value="19 Nuevo León">Nuevo León</option>
+                                    <option value="20 Oaxaca">Oaxaca</option>
+                                    <option value="21 Puebla">Puebla</option>
+                                    <option value="22 Querétaro">Querétaro</option>
+                                    <option value="23 Quintana Roo">Quintana Roo</option>
+                                    <option value="24 San Luis Potosí">San Luis Potosí</option>
+                                    <option value="25 Sinaloa">Sinaloa</option>
+                                    <option value="26 Sonora">Sonora</option>
+                                    <option value="27 Tabasco">Tabasco</option>
+                                    <option value="28 Tamaulipas">Tamaulipas</option>
+                                    <option value="29 Tlaxcala">Tlaxcala</option>                                        
+                                    <option value="30 Veracruz">Veracruz</option>
+                                    <option value="31 Yucatán">Yucatán</option>
+                                    <option value="32 Zacatecas">Zacatecas</option>
                                 </select>
                         </div>
                     </div>
@@ -267,7 +284,7 @@
                 </div>
                 <center>
                     <div class="my-2 p-1">
-                        <a href="./FormaPago.html"><button type="button" class="btn btn-outline-dark">Proceder al pago</button></a>
+                        <a id="formaPago"><button type="submit" class="btn btn-outline-dark">Proceder al pago</button></a>
                     </div>
                 </center>
             </form>
@@ -341,7 +358,7 @@
 <!--jquery-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!--conexion js-->
-<script src="./Assets/Js/Cart.js"> </script>
+<script src="./Assets/Js/Carrito.js"> </script>
 
 <!--validation-->
 <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>

@@ -29,27 +29,44 @@
   <!------------------------------------------------------
                        Encabezado
 -------------------------------------------------------->
-  <nav class="navbar p-3" id="colo">
-    <div class="container">
-      <a class="navbar-item" href="./Index.html">
-        <img src="./Assets/Img/logo.png" alt="" width="70" height="60">
+<nav class="navbar p-3" id="colo">
+  <div class="container">
+    <a class="navbar-item">
+      <img src="./Assets/Img/logo.png" alt="" width="70" height="60" id="logoMainPage">
+    </a>
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <a class="navbar-item">
+        <img src="./Assets/Img/ribbon.png" alt="" width="200" height="80">
       </a>
-      <div class="position-absolute top-50 start-50 translate-middle">
-        <a class="navbar-item">
-          <img src="./Assets/Img/ribbon.png" alt="" width="200" height="80">
-        </a>
-      </div>
-      <div class="ms-auto">
-        <a class="navbar-item m-1" href="./Login.html">
-          <img src="./Assets/Img/iconUser.png" width="30px" height="30px">
-        </a>
-        <a class="cart" href="./Cart.html">
-          <img src="./Assets/Img/cart.png" width="30px" height="30px"><span
-            class="position-absolute top-25 end-175 translate-middle" id="contador">0</span>
-        </a>
+    </div>
+    <div class="ms-auto">
+      <a href="./Login.html">
+        <img src="./Assets/Img/iconUser.png" id="icon-login" width="30" height="30">
+      </a>
+    </div>
+    <div class="mr-auto">
+      <div class="container-icon" id="icon-cart">
+        <div class="container-cart-icon">
+          <img class="container-icon mr-5" src="./Assets/Img/shoppingbag.png" width="30" height="30">
+          <div class="count-products">
+            <span id="contador-productos">0</span>
+          </div>
+        </div>
+        <div class="container-cart-products hidden-cart">
+          <div class="row-product hidden">
+            <!----------------  Cart Products  ------------------->
+          </div>
+          <div class="cart-total hidden">
+            <h3>Total:</h3>
+            <span class="total-pagar">$ 00.00 MXN</span>
+            <button type="button" class="btn btn-dark btn-sm" onclick="window.location.href='./Carrito.html'">Carrito</button>
+          </div>
+          <p class="cart-empty">El carrito está vacío</p>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
   <!------------------------------------------------------
                 NavBar position-absolute top-50 start-50 translate-middle 
 -------------------------------------------------------->
@@ -66,13 +83,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" style="color: #640002" href="./Productores.html">PRODUCTORES</a>
+            <a class="nav-link" style="color: #000000" onclick="window.location.href='./Productores.html'">PRODUCTORES</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: #640002" href="./Nosotros.html">NOSOTROS</a>
+            <a class="nav-link" style="color: #000000" onclick="window.location.href='./Nosotros.html'">NOSOTROS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: #640002" href="./Contacto.html">CONTACTANOS</a>
+            <a class="nav-link" style="color: #000000" onclick="window.location.href='./Contacto.html'">CONTACTANOS</a>
           </li>
         </ul>
       </div>
@@ -129,7 +146,7 @@
 
           <center>
             <div class="my-2 p-1">
-              <button  class="btn btn-outline-dark" onclick="login()">Iniciar sesión</button>
+              <button  class="btn btn-outline-dark loggingButton" id="loggingButton">Iniciar sesión</button>
             </div>
           </center>
 
@@ -171,7 +188,7 @@
         </div>
         <div class="my-3 text-center">
           <span>¿No tienes cuenta? <a href="./Formulario.html">
-              <h3>Registrate</h3>
+              <h3 id="register">Registrate</h3>
             </a></span> <br>
           <!--<span><a href="#">Recuperar Password</a></span>-->
         </div>
@@ -251,7 +268,7 @@
   <!--jquery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <!--conexion js-->
-  <script src="./Assets/Js/Cart.js"> </script>
+  <script src="./Assets/Js/Carrito.js"> </script>
   <!--Login.js-->
   <script src="./Assets/Js/Login.js"></script>
   <!--validation-->

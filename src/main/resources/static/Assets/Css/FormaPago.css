@@ -26,7 +26,7 @@ body{
 .navbar{
     background-color: #FFA931;
     font-weight: bold;
-	color: #640002;
+	color: #000000;
 }
 
 /* FOOTER */
@@ -50,237 +50,170 @@ footer{
 	color: #640002;
 }
 
-/* ----- -----  Estilos para Validacion ----- ----- */
-.formulario__grupo-correcto .formulario__validacion-estado {
-	color: #000000;
-	opacity: 1;
+/* Carrito */
+.container-icon{
+    position: relative;
 }
 
-.formulario__grupo-incorrecto .formulario__label {
-	color: #000000;
+#icon-cart{
+    width: 30px;
+    height: 30px;
+    stroke: #000;
 }
 
-.formulario__grupo-incorrecto .formulario__validacion-estado {
-	color: #000000;
-	opacity: 1;
-}
-
-.formulario__grupo-incorrecto .formulario__input {
-	border: 3px solid #bb2929;
-}
-
-/*---------------------validation-------------------------*/
-
-.formulario__validacion-estado {
-	
-	bottom: 15px;
-	z-index: 100;
-	font-size: 16px;
-	opacity: 0;
-}
-
-/* ----- -----  Mediaqueries ----- ----- */
-@media screen and (max-width: 800px) {
-	.formulario {
-		grid-template-columns: 1fr;
-	}
-
-	.formulario__grupo-terminos, 
-	.formulario__mensaje,
-	.formulario__grupo-btn-enviar {
-		grid-column: 1;
-	}
-
-	.formulario__btn {
-		width: 100%;
-	}
-}
-
-.formulario__input {
-	width: 100%;
-	background: #fff;
-	border: 3px solid transparent;
-	border-radius: 3px;
-	height: 45px;
-	padding: 0 40px 0 10px;
-	transition: .3s ease all;
-}
-
-.formulario__input:focus {
-	border: 3px solid #0075FF;
-	outline: none;
-	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
-}
-
-.formulario__input-error {
-	font-size: 12px;
-	display: none;
-}
-
-.formulario__input-error-activo {
-	display: block;
-}
-
-/*color de numero de carrito*/
-#contador{
-    color: #000;
-}
-
-/*  Month and year*/
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-form span{
-    display: block;
-    margin: 20px 0;
-}
-/*make form styling consistent across browsers*/
-button, input, select, textarea {
-    font-size: 100%;
-  }
-
-#tarjetaImg{
-    max-width: 40%;
-    height: auto;
-}
-
-#logotarjetas{
-	max-width: 40%;
-	height: auto;
-}
-/******************Carrito*********************/
-/******************Carrito*********************/
-/* CARRITO */
-
-.container-products {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 100%;
-    margin: 0 auto;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.container-products ion-icon {
-    font-size: 20px;
-    color: #190974;
-    margin-left: 0px;
-    margin-right: 0px;
+#icon-cart:hover{
     cursor: pointer;
 }
 
-.product-header {
+.count-products{
+    position: absolute;
+    top: 60%;
+    right: 0px;
+
+    background-color: #000;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30%;
+}
+
+#contador-productos{
+    font-size: 12px;
+}
+
+.container-cart-products{
+    position: absolute;
+    top: 30px;
+    right: 0;
+
+    background-color: #fff;
+    width: 400px;
+    z-index: 1;
+    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.cart-product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+}
+
+.info-cart-product{
+    display: flex;
+    justify-content: space-between;
+    flex: 0.8;
+}
+
+
+.icon-close{
+    width: 25px;
+    height: 25px;
+}
+
+.icon-close:hover{
+    stroke: red;
+    cursor: pointer;
+}
+
+.titulo-producto-carrito{
+    font-size: 20px;
+}
+
+.precio-producto-carrito{
+    font-weight: 400;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.cantidad-producto-carrito{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.cart-total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+}
+
+.cart-total h3{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.total-pagar{
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.hidden-cart{
+    display: none;
+}
+
+/*Cards*/
+.item{
+    border-radius: 10px 10px 0 0;
+}
+
+.item figure{
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+
+
+.card{
+    border-radius: 10px 10px 0 0;
+}
+
+.card-image-top{
+    border-radius: 10px 10px 0 0;
+}
+
+.item:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.20);
+}
+
+.item:hover img{
+    transform: scale(1.2);
+}
+
+.item img{
     width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    border-bottom: 4px solid black;
-    margin: 0 auto;
-    background-color: #FFA931;
-    border-radius: 10px;
-    color: #640002;
-    font-weight: bold;
+    height: 250px;
+    object-fit: cover;
+    transition: all .5s;
 }
 
-.product-title {
-    width: 45%;
-    border-bottom: 1px solid black;
+.cart-empty{
+    padding: 20px;
     text-align: center;
 }
 
-
-.price {
-    width: 15%;
-    border-bottom: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    
+.hidden{
+    display: none;
 }
 
-.quantity {
-    width: 25%;
-    border-bottom: 1px solid black;
-    display: flex;
-    align-items: center;
-	justify-content: center;
-}
 
-.total {
-    width: 15%;
-    border-bottom: 1px solid black;
-    display: flex;
-    align-items: center;
-}
 
-.product {
-    width: 45%;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid black;
-}
-
-.product ion-icon {
-    cursor: pointer;    
-}
-
-.products {
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.products img {
+#sakalogo{
     width: 100px;
-    margin: 15px;
 }
 
-.basketTotalContainer {
+#formaPago{
     display: flex;
-    justify-content: flex-end;
-    padding: 10px;
+    justify-content: center;
 }
 
-.basketTotalTitle {
-    width: 80%;
-    text-align: center;
-    background-color: #190974;
-    border-radius: 10px;
-    color: #FDF6DB;
-    font-weight: bold;
-    margin: 10px;
-}
-
-.basketTotal {
-    width: 20%;
-    text-align: right;
-    margin: 10px;
-}
-
-@media(max-width: 500px) {
-    nav h2 {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 10px;;
-    }
-
-    .sm-hide {
-        display: none;;
-    }
-
-    .products,
-    .product-header {
-        justify-content: space-around;
-    }
-
-    .basketTotalContainer {
-        padding-right: 8%;
-    }
+#pagoContainer{
+    width: fit-content;
 }

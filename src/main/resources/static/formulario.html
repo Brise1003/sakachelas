@@ -38,13 +38,30 @@
       </a>
     </div>
     <div class="ms-auto">
-      <a class="navbar-item" href="./Login.html">
-        <img src="./Assets/Img/iconUser.png" alt="" width="30" height="30">
+      <a href="./Login.html">
+        <img src="./Assets/Img/iconUser.png" id="icon-login" width="30" height="30">
       </a>
-      <a class="cart" href="./Cart.html">
-        <img src="./Assets/Img/cart.png" alt="" width="30" height="30"><span
-        class="position-absolute top-25 end-175 translate-middle" id="contador">0</span>
-      </a>
+    </div>
+    <div class="mr-auto">
+      <div class="container-icon" id="icon-cart">
+        <div class="container-cart-icon">
+          <img class="container-icon mr-5" src="./Assets/Img/shoppingbag.png" width="30" height="30">
+          <div class="count-products">
+            <span id="contador-productos">0</span>
+          </div>
+        </div>
+        <div class="container-cart-products hidden-cart">
+          <div class="row-product hidden">
+            <!----------------  Cart Products  ------------------->
+          </div>
+          <div class="cart-total hidden">
+            <h3>Total:</h3>
+            <span class="total-pagar">$ 00.00 MXN</span>
+            <button type="button" class="btn btn-dark btn-sm" onclick="window.location.href='./Carrito.html'">Carrito</button>
+          </div>
+          <p class="cart-empty">El carrito está vacío</p>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
@@ -269,7 +286,7 @@
 <script src="./Assets/Js/Formulario.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <!--conexion js-->
- <script src="./Assets/Js/Cart.js"> </script>
+ <script src="./Assets/Js/Carrito.js"> </script>
  <!--Js swal-->
  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  <script src="./Assets/Js/Main.js"></script>

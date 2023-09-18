@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Table(name = "pedidos")
@@ -20,6 +21,9 @@ public class Pedido {
 
     @Column(name = "estatus")
     private String status;
+
+    @Column(name = "direccion", length = 500)
+    private String direccion;
 
     @Column(name = "fecha")
     private Timestamp fecha;
@@ -61,6 +65,14 @@ public class Pedido {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public Timestamp getFecha() {

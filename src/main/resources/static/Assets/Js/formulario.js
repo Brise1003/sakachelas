@@ -141,21 +141,23 @@ function validarEdad() {
   dayAge = hoy.getDate() - birthdate.getDate();
   if (dayAge < 0) monthAge -= 1;
   if (monthAge < 0) yearAge -= 1;
-
   return yearAge;
 }
 
 async function registerUser() {
   validarEdad();
-  
+
   let datos = {};
-  datos.username = document.getElementById("nombre").value;
-  datos.userLastname = document.getElementById("apellido").value;
-  datos.age = yearAge;
+  datos.name = document.getElementById("nombre").value;
+  datos.lastname = document.getElementById("apellido").value;
+  datos.birthday = document.getElementById("fecha").value + "T00:00:00";
   datos.email = document.getElementById("correo").value;
   datos.password = document.getElementById("password").value;
 
-  const request = await fetch('http://localhost:8090/sakachelas/api/users/save', {
+  console.log(datos);
+  
+
+  const request = await fetch('http://localhost:8090/sakachelas/api/auth/signup', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -163,6 +165,6 @@ async function registerUser() {
     },
     body: JSON.stringify(datos)
   });
-  const usuarios = await request.json();
+  // const usuarios = await request.json();
   window.location.href = './login.html';
 }

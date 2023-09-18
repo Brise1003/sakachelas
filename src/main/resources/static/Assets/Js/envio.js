@@ -6,7 +6,7 @@ const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
 	nombres: /^[a-zA-ZÀ-ÿ\s]{1,30}$/, // Letras y espacios, pueden llevar acentos
-	direccion: /^[a-zA-ZÀ-ÿ\s\d]{1,70}$/, // Letras, espacios y numeros, pueden llevar acentos
+	direccion: /^[a-zA-ZÀ-ÿ\s\d\.]{1,70}$/, // Letras, espacios y numeros, pueden llevar acentos
 	telefono: /^\d{10}$/, // 10 numeros
 	numero: /^[a-zA-Z\d]{1,5}$/,
 	cp: /^\d{5}$/
@@ -80,13 +80,32 @@ inputs.forEach((input) => {
 });
 
 
-// formulario.addEventListener('submit', (e) => {
-// 	e.preventDefault();
+formulario.addEventListener('submit', (e) => {
+	e.preventDefault();
 
-// 	if(campos.nombre && campos.apellidoP && campos.direccion && campos.numero && campos.ciudad && campos.cp && campos.colonia && campos.telefono){
-// 		formulario.reset();
-// 	}
-// })
+	if(campos.nombre && campos.apellidoP && campos.direccion && campos.numero && campos.ciudad && campos.cp && campos.colonia && campos.telefono){
+		alert("Procediendo al pago.");
+		window.location.href = "./FormaPago.html";
+	}else{
+		alert("Ingrese los datos obligatorios.");
+	}
+
+	estado = document.getElementById("estado").nextElementSibling.value;
+
+	datosEnvio = {
+		nombre: nombre.value, 
+		apellidoP: apellidoP.value,
+		direccion: direccion.value,
+		numero: numero.value,
+		ciudad: ciudad.value,
+		estado: estado,
+		cp: cp.value,
+		colonia: colonia.value,
+		telefono: telefono.value,
+		};
+	console.log(datosEnvio);
+	localStorage.setItem("datosEnvio", JSON.stringify(datosEnvio));
+})
 
 
 

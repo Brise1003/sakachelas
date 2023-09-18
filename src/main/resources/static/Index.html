@@ -27,33 +27,51 @@
   <!------------------------------------------------------
                        Encabezado
 -------------------------------------------------------->
-  <nav class="navbar p-3" id="colo">
-    <div class="container">
-      <a class="navbar-item" href="./Index.html">
-        <img src="./Assets/Img/logo.png" alt="" width="70" height="60">
+<nav class="navbar p-3" id="colo">
+  <div class="container">
+    <a class="navbar-item" href="./Index.html">
+      <img src="./Assets/Img/logo.png" alt="" width="70" height="60">
+    </a>
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <a class="navbar-item">
+        <img src="./Assets/Img/ribbon.png" alt="" width="200" height="80">
       </a>
-      <div class="position-absolute top-50 start-50 translate-middle">
-        <a class="navbar-item">
-          <img src="./Assets/Img/ribbon.png" alt="" width="200" height="80">
-        </a>
-      </div>
-      <div class="ms-auto">
-        <a class="navbar-item" href="./Login.html">
-          <img src="./Assets/Img/iconUser.png" alt="" width="30" height="30">
-        </a>
-        <a class="cart" href="./Cart.html">
-          <img src="./Assets/Img/cart.png" alt="" width="30" height="30"><span
-            class="position-absolute top-25 end-175 translate-middle" id="contador">0</span>
-        </a>
+    </div>
+    <div class="ms-auto">
+      <a href="./Login.html">
+        <img src="./Assets/Img/iconUser.png" id="icon-login" width="30" height="30">
+      </a>
+    </div>
+    <div class="mr-auto">
+      <div class="container-icon" id="icon-cart">
+        <div class="container-cart-icon">
+          <img class="container-icon mr-5" src="./Assets/Img/shoppingbag.png" width="30" height="30">
+          <div class="count-products">
+            <span id="contador-productos">0</span>
+          </div>
+        </div>
+        <div class="container-cart-products hidden-cart">
+          <div class="row-product hidden">
+            <!----------------  Cart Products  ------------------->
+          </div>
+          <div class="cart-total hidden">
+            <h3>Total:</h3>
+            <span class="total-pagar">$ 00.00 MXN</span>
+            <button type="button" class="btn btn-dark btn-sm" onclick="window.location.href='./Carrito.html'">Carrito</button>
+          </div>
+          <p class="cart-empty">El carrito está vacío</p>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
+
   <!------------------------------------------------------
                 NavBar position-absolute top-50 start-50 translate-middle 
 -------------------------------------------------------->
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="nav-link" id="cervezasNavBar" onclick="updateFiltro('all')" style="color: #640002">CERVEZAS</a>
+      <a class="nav-link" id="cervezasNavBar" onclick="updateFiltro('all')" style="color: #000000">CERVEZAS</a>
       <form class="d-flex d-lg-block col-sm-5 col-md-5 col-lg-5 ms-lg-5" role="search">
         <input class="form-control" type="search" placeholder="¿Qué buscas?" aria-label="Search">
       </form>
@@ -64,13 +82,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="./Productores.html" style="color: #640002">PRODUCTORES</a>
+            <a class="nav-link" href="./Productores.html" style="color: #000000">PRODUCTORES</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./Nosotros.html" style="color: #640002">NOSOTROS</a>
+            <a class="nav-link" href="./Nosotros.html" style="color: #000000">NOSOTROS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./Contacto.html" style="color: #640002">CONTACTANOS</a>
+            <a class="nav-link" href="./Contacto.html" style="color: #000000">CONTACTANOS</a>
           </li>
         </ul>
       </div>
@@ -265,7 +283,7 @@
     crossorigin="anonymous"></script>
 
   <!--conexion js-->
-  <script src="./Assets/Js/Cart.js"> </script>
+  <script src="./Assets/Js/Carrito.js"> </script>
   <!--Js swal-->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./Assets/Js/Main.js"></script>

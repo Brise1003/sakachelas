@@ -16,35 +16,31 @@ function updateFiltro(catalogo){
 
 
 function showItems(div_Productos) {  
-    fetch('http://localhost:8090/sakachelas/api/products/'+localStorage.filtro, {
+    fetch('http://localhost:8090/sakachelas/api/products/' + localStorage.filtro, {
     method: 'get' 
     })
     .then(function(response) {
         response.json().then(function (json) { 
             Array.from(json).forEach((p, index) => { 
+                beerPrice = p.price;
                 div_Productos.innerHTML += `
-                    <div class="col-sm-3">
-                    <div class="card md-3 shadow-sm">
-                        <img class="bd-placeholder-img card-img-top" role="img" src="Assets/img/${p.image}" />
-                        <div class="card-body sm-1">
-                        <p class="card-text"><strong>${p.name}</strong></p>
-                        <p class="card-text">${p.description}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                            <a class="add-cart cart2" href="#"><i class="produto__icon fas fa-cart-plus"><img src="./Assets/Img/carrito.jpeg" alt=""
-                            class="img_carrito"></i></a>
-                            </div>
-                            <small class="text-muted">$ ${p.price} MXN</small>
-                        </div>
-                        </div>
-                    </div>
-                    </div>`;
+                <div class="col-sm-3 pb-3">
+                    <div class="item card md-3">
+                        <figure><img class="card-image-top" role="img" src="Assets/img/${p.image}" /></figure>
+                        <div class="card-body info-product">
+                            <strong>${p.name}</strong>
+                            <p>${p.description}</p>
+                    <p class="price">$ ${beerPrice.toFixed(2)} MXN </p><button type="button" class="btn btn-dark btn-sm btn-add-cart">Agregar</button>
+                  </div>
+                </div>
+              </div>
+                    `;
             }); 
         });
     }).catch(function(err) { 
         console.log(err); 
     });
-    console.log(document.getElementById("div_Productos"));
+   
 }
 
 
@@ -61,7 +57,20 @@ async function loadBeers(){
     const response = await request.json();
 
     for(let beer of response.content){
-        div_Productos.innerHTML += '<div class="col-md-4"><div class="card mb-4 shadow-sm"><img class="bd-placeholder-img card-img-top" role="img" src="Assets/img/'+beer.image+'" /><div class="card-body"><p class="card-text"><strong>'+beer.name+'</strong></p><p class="card-text">'+beer.description+'</p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"><a class="add-cart cart2" href="#"><i class="produto__icon fas fa-cart-plus"><img src="./Assets/Img/carrito.jpeg" alt=""class="img_carrito"></i></a></div><small class="text-muted">$ '+beer.price+' MXN</small></div></div></div></div>';
+        beerPrice = beer.price;
+
+        div_Productos.innerHTML += `
+        <div class="col-sm-3 pb-3">
+            <div class="item card md-3">
+                <figure><img class="card-image-top" role="img" src="Assets/img/${beer.image}" /></figure>
+                <div class="card-body info-product">
+                    <strong>${beer.name}</strong>
+                    <p>${beer.description}</p>
+                    <p class="price">$ ${beerPrice.toFixed(2)} MXN </p><button type="button" class="btn btn-dark btn-sm btn-add-cart">Agregar</button>
+                </div>
+            </div>
+        </div>
+        `;
     }
     document.getElementById("div_Productos") = div_Productos;
     
