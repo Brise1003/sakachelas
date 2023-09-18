@@ -31,7 +31,7 @@ public class Usuario {
     @Column(name = "apellido")
     private String apellidoUsuario;
 
-    @Column(name = "fecha_nacimiento", columnDefinition = "DATETIME")
+    @Column(name = "fecha_nacimiento", columnDefinition = "DATE")
     private LocalDateTime fechaNacimiento;
 
     @Column(name = "correo")

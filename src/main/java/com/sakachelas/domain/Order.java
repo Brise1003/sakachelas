@@ -9,6 +9,7 @@ public class Order {
     private int orderId;
     private String trackingGuide;
     private String status;
+    private String address;
     private Timestamp date;
     private int userId;
     private String payment;
@@ -37,6 +38,14 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Timestamp getDate() {

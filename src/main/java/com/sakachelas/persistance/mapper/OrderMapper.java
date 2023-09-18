@@ -16,6 +16,7 @@ public interface OrderMapper {
             @Mapping(source = "idPedido", target = "orderId"),
             @Mapping(source = "numeroGuia", target = "trackingGuide"),
             @Mapping(source = "status", target = "status"),
+            @Mapping(source = "direccion", target = "address"),
             @Mapping(source = "fecha", target = "date"),
             @Mapping(source = "idUsuario", target = "userId"),
             @Mapping(source = "medioPago", target = "payment"),

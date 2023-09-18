@@ -5,10 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="./Assets/Img/logo.png">
+  <script src="https://www.paypal.com/sdk/js?client-id=AT0hqNtsfZiS-oYSgrebKuJWwrq3poExc7AbFKArQtTlKL9mBZiIGaawSv8ZXqMSvq1IW-aU1tMup0M_&currency=MXN"></script>
   <title>Forma de pago SakáChelas</title>
   <!--BootStrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <!--Bootstrap button-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!--CSS file-->
@@ -19,14 +20,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300&display=swap" rel="stylesheet">
   <!-- //Iconos -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  
+
+
 </head>
 
 <body>
-
-  <!-- <audio autoplay>
-      <source src="/Assets/lata.mp3" type="audio/mpeg">
-    </audio> -->
   <!------------------------------------------------------
                          Encabezado
   -------------------------------------------------------->
@@ -41,13 +39,31 @@
         </a>
       </div>
       <div class="ms-auto">
-        <a class="navbar-item m-1" href="./Login.html">
-          <img src="./Assets/Img/iconUser.png" width="30px" height="30px">
+        <a href="./Login.html">
+          <img src="./Assets/Img/iconUser.png" id="icon-login" width="30" height="30">
         </a>
-        <a class="cart" href="./Cart.html">
-          <img src="./Assets/Img/cart.png" width="30px" height="30px"><span
-            class="position-absolute top-25 end-175 translate-middle" id="contador">0</span>
-        </a>
+      </div>
+      <div class="mr-auto">
+        <div class="container-icon" id="icon-cart">
+          <div class="container-cart-icon">
+            <img class="container-icon mr-5" src="./Assets/Img/shoppingbag.png" width="30" height="30">
+            <div class="count-products">
+              <span id="contador-productos">0</span>
+            </div>
+          </div>
+          <div class="container-cart-products hidden-cart">
+            <div class="row-product hidden">
+              <!----------------  Cart Products  ------------------->
+            </div>
+            <div class="cart-total hidden">
+              <h3>Total:</h3>
+              <span class="total-pagar">$ 00.00 MXN</span>
+              <button type="button" class="btn btn-dark btn-sm"
+                onclick="window.location.href='./Carrito.html'">Carrito</button>
+            </div>
+            <p class="cart-empty">El carrito está vacío</p>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -80,209 +96,115 @@
     </div>
   </nav>
   <!-------------------------------------------------------------------------
-                               Login
+                              Pago
   ------------------------------------------------------------------------->
-  <div class="container bg-white bg-opacity-75 rounded-4 shadow">
+  <div class="container bg-white bg-opacity-75 rounded-4 shadow" id="pagoContainer">
     <div class="row my-5">
-      <div class="col p-4">
-        <div class="text-black align-content-center">
-          <img src="./Assets/Img/logo.png" width="100px" alt="">
-        </div>
-        <center>
-        <h2 class="fw-bold text-center py-5">Pago con tarjeta
-          <img src="./Assets/Img/logostarjetas.png" id="logotarjetas">
-        </h2>
-        
-      </center>
-        <!--Inputs-------->
-        <form class="formulario" id="formulario" action="#">
+      <div class="row"><img src="./Assets/Img/logo.png" id="sakalogo"></div>
 
-          <!--Nombre del titular-->
-          <div class="formulario__grupo" id="grupo__titular">
-            <div clas="grupo__titular" id="grupo__titular">
-              <div class="mb-4">
-                <label for="titular" class="form-label w-75">Nombre del titular*
-                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                </label>
-                <div class="formulario__grupo-input">
-                  <input id="titular" type="text" class="form-control" name="titular" placeholder="Nombre del titular">
-                </div>
-                <p class="formulario__input-error">Únicamente letras</p>
-              </div>
+        <div class="col">
+          <center>
+            <h3>Pago en línea</h3>
+          </center>
+          <div id="formaPago">
+            <div id="paypal-button-container">
+  
             </div>
           </div>
-          <!--Número de tarjeta-->
-          <div class="formulario__grupo" id="grupo__tarjeta">
-            <div clas="grupo__tarjeta" id="grupo__tarjeta">
-              <div class="mb-4">
-                <label for="tarjeta" class="form-label w-75">Número de la tarjeta*
-                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                </label>
-                <div class="formulario__grupo-input">
-                  <input id="tarjeta" type="text" class="form-control" name="tarjeta" placeholder="Número de tarjeta">
-                </div>
-                <p class="formulario__input-error">Únicamente números</p>
-              </div>
-            </div>
-          </div>
-          <!---Mes y año-->
-          <div class="row">
-            <div class="col-4">
-              <div class="row">
-                <label class="form__label">Fecha de vencimiento</label>
-                <div class="col">
-                  <label class="form__label">Mes*</label>
-                  <span>
-                    <select name="month" id="month" class="form-control w-auto text-center" placeholder="Mes"></select>
-                  </span>
-                </div>
-                <div class="col">
-                  <label class="form__label">Año*</label>
-              <span>
-                <select name="year" id="year" class="form-control w-auto text-center" placeholder="Año"></select>
-              </span>
-                </div>
-              </div>
+        </div>
+
+        <div class="col">
+          <table class="table bg-transparent" id="orderProducts">
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="row">
+                  <h3>Item</h3>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
               
-
-              
-
-
-              <!--CVV-->
-
-              <div class="formulario__grupo" id="grupo__cvv">
-                <label for="cvv" class="form-label">CVV*
-                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                </label>
-                <div clas="grupo__cvv" id="grupo__cvv">
-
-                  <div class="formulario__grupo-input">
-
-                    <input id="cvv" type="text" class="form-control w-auto" name="cvv" placeholder="Número de cvv">
-                  </div>
-                  <p class="formulario__input-error">3-4 Números</p>
-                </div>
-
-              </div>
-            </div>
-
-            <!--CVV-->
-
-            <div class="col-8">
-              <img src="./Assets/Img/tarjnegra.jpg" id="tarjetaImg">
-            </div>
-          </div>
-
-          
-
-        </form>
-      </div>
-      <div class="col-12 col-lg-7 col-md-7 col-sm-12">
-        <!--------------------------------------Carrito------------------------------------->
-
-        <div class="container-products">
-          <div class="product-header">
-              <h5 class="product-title" id="carText">Producto</h5>
-              <h5 class="price" id="carText">Precio</h5>
-              <h5 class="quantity" id="carText">Cant.</h5>
-              <h5 class="total" id="carText">Total</h5>
-          </div>
-      
-          <!-- Div vacio para productos -->
-          <div class="products">
-      
-          </div>
-        
+            </tbody>
+            <tr>
+              <td colspan="3" id="totalGrid">
+              Total: $ 180.00 MXN
+              </td>
+            </tr>
+          </table>
         </div>
-
-
-        <!--------------------------------------Carrito------------------------------------->
-      </div>
-      <center>
-        <div class="my-2 p-1">
-          <button type="submit" class="btn btn-outline-dark" onclick="pago()">Realizar Pago</button>
-        </div>
-      </center>
       </div>
     </div>
-
-    
-      
-        
-      
   </div>
-
-
-
   <!-- FOOTER -->
   <footer>
-    <!-- Tel, correo y redes sociales -->
-    <!-- <div class="container-fluid"> -->
     <div class="container">
       <div class="row">
-  
+
         <!-- Redes sociales -->
         <div class="col-md-2">
           <div class="footerRedesSociales">
-              <h6> Tel: +52 55 55 55 55 </h6>
-              <h6> Correo: correo@outlook.com </h6>
-              <h6> Redes sociales </h6>
-              <a href="https://www.facebook.com/" target="_blank"><img src="./Assets/Img/icono-fc.png" alt="logotipo de Facebook" height="30px"></a>
-              <a href="https://www.instagram.com/" target="_blank"><img src="./Assets/Img/icono-ig.webp" alt="logotipo de Instagram" height="30px"></a>
-              <a href="https://twitter.com/?lang=es" target="_blank"><img src="./Assets/Img/icono-tw.png" alt="logotipo de twitter" height="30px"></a>
+            <h6> Tel: +52 55 55 55 55 </h6>
+            <h6> Correo: correo@outlook.com </h6>
+            <h6> Redes sociales </h6>
+            <a href="https://www.facebook.com/" target="_blank"><img src="./Assets/Img/icono-fc.png"
+                alt="logotipo de Facebook" height="30px"></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="./Assets/Img/icono-ig.webp"
+                alt="logotipo de Instagram" height="30px"></a>
+            <a href="https://twitter.com/?lang=es" target="_blank"><img src="./Assets/Img/icono-tw.png"
+                alt="logotipo de twitter" height="30px"></a>
           </div>
         </div>
-  
+
         <!-- Aviso de privacidad -->
-      <div class="col-md-3">
-        <h6>
-          <a onclick="aviso()" class="linkFooter">Aviso de privacidad</a>
-        </h6>
-      </div>
-  
+        <div class="col-md-3">
+          <h6>
+            <a onclick="aviso()" class="linkFooter">Aviso de privacidad</a>
+          </h6>
+        </div>
+
         <!-- Terminos y condiciones -->
         <div class="col-md-3">
           <h6>
             <a href="./TerminosYCondiciones.html" class="linkFooter">Términos y condiciones</a>
           </h6>
         </div>
-  
-      <!-- Contacto -->
-      <div class="col-md-2">
-        <h6>
-          <a href="./Contacto.html" class="linkFooter">Contacto</a>
-        </h6>
+
+        <!-- Contacto -->
+        <div class="col-md-2">
+          <h6>
+            <a href="./Contacto.html" class="linkFooter">Contacto</a>
+          </h6>
+        </div>
+
+        <!-- Nosotros -->
+        <div class="col-md-2">
+          <h6>
+            <a href="./Nosotros.html" class="linkFooter">Nosotros</a>
+          </h6>
+        </div>
+
       </div>
-  
-      <!-- Nosotros -->
-      <div class="col-md-2">
-        <h6>
-          <a href="./Nosotros.html" class="linkFooter">Nosotros</a>
-        </h6>
-      </div>
-  
-  
-      </div>
-  
     </div>
-  
+
     <div class="text-center">
       Evite el exceso
     </div>
     <!-- </div> -->
-  
-    </div>
+
   </footer>
   <!--BootStrap-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
+
   <!--jquery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!--conexion js-->
-  <script src="./Assets/Js/cart.js"> </script>
-  <!--Login.js-->
+  <script src="./Assets/Js/Carrito.js"> </script>
   <script src="./Assets/Js/FormaPago.js"></script>
+  <!--Login.js-->
+  <!-- <script src="./Assets/Js/FormaPago.js"></script> -->
   <!--validation-->
   <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
   <!--swal-->
